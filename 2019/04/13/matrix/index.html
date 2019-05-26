@@ -1,0 +1,988 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head><meta name="generator" content="Hexo 3.8.0">
+  
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/others/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
+
+
+  
+    <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+<link rel="stylesheet" type="text/css" href="/others/font-awesome/css/font-awesome.min.css?v=4.4.0">
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2">
+
+
+    <meta name="description" content="悄悄是别离的笙箫，沉默是今晚的康桥。">
+
+
+
+  <meta name="keywords" content="PyTorch,">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Qwertymjs's Blog" type="application/atom+xml">
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2">
+
+
+<meta name="description" content="1 Crete Matrix1. 1 Create python list12arr = [[1, 2], [3, 4]]arr">
+<meta name="keywords" content="PyTorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linear Algebra and Matrix">
+<meta property="og:url" content="http://qwertymjs.github.io/2019/04/13/matrix/index.html">
+<meta property="og:site_name" content="Qwertymjs&#39;s Blog">
+<meta property="og:description" content="1 Crete Matrix1. 1 Create python list12arr = [[1, 2], [3, 4]]arr">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-04-26T09:43:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linear Algebra and Matrix">
+<meta name="twitter:description" content="1 Crete Matrix1. 1 Create python list12arr = [[1, 2], [3, 4]]arr">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post'
+  };
+</script>
+
+
+
+  <title> Linear Algebra and Matrix | Qwertymjs's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div id="container" class="container one-column page-post-detail">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-work-page">
+          <a href="/work-page" rel="section">
+            
+              <i class="menu-item-icon fa fa-gear"></i> <br>
+            
+            通天塔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-study-page">
+          <a href="/study-page" rel="section">
+            
+              <i class="menu-item-icon fa fa-compass"></i> <br>
+            
+            奇衡三
+          </a>
+        </li>
+      
+
+      
+      
+	  	<span style="font-size:14px;float:right;padding:39px 40px 0 0;">——悄悄是别离的笙箫，沉默是今晚的康桥。</span>
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+
+        	<div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Linear Algebra and Matrix
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2019-04-13T00:16:32+08:00" content="2019-04-13">
+              2019-04-13 00:16
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Math/" itemprop="url" rel="index">
+                    <span itemprop="name">Math</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            <span id="/2019/04/13/matrix/" class="leancloud_visitors" data-flag-title="Linear Algebra and Matrix">
+            &nbsp; | &nbsp;   
+            views
+            </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="1-Crete-Matrix"><a href="#1-Crete-Matrix" class="headerlink" title="1 Crete Matrix"></a>1 Crete Matrix</h3><h4 id="1-1-Create-python-list"><a href="#1-1-Create-python-list" class="headerlink" title="1. 1 Create python list"></a>1. 1 Create python list</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr = [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]]</span><br><span class="line">arr</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="1-2Create-numpy-array-via-python-list"><a href="#1-2Create-numpy-array-via-python-list" class="headerlink" title="1. 2Create numpy array via python list"></a>1. 2Create numpy array via python list</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># convert to numpy</span></span><br><span class="line">numpy_arr = np.array(arr)</span><br><span class="line">numpy_arr</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1, 2],
+       [3, 4]])
+</code></pre><h4 id="1-3-Convert-numpy-array-to-PyTorch-tensor"><a href="#1-3-Convert-numpy-array-to-PyTorch-tensor" class="headerlink" title="1.3 Convert numpy array to PyTorch tensor"></a>1.3 Convert numpy array to PyTorch tensor</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">torch.Tensor(numpy_arr)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([[1., 2.],
+        [3., 4.]])
+</code></pre><h4 id="1-4-Create-Matrices-with-Default-Values"><a href="#1-4-Create-Matrices-with-Default-Values" class="headerlink" title="1.4 Create Matrices with Default Values"></a>1.4 Create Matrices with Default Values</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># create 2x3 numpy array of 1</span></span><br><span class="line">np.ones((<span class="number">2</span>, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1., 1., 1.],
+       [1., 1., 1.]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># create 2x3 PyTorch tensor of 1</span></span><br><span class="line">torch.ones((<span class="number">2</span>, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([[1., 1., 1.],
+        [1., 1., 1.]])
+</code></pre><h4 id="1-5-Create-Matrices-with-random-values"><a href="#1-5-Create-Matrices-with-random-values" class="headerlink" title="1.5 Create Matrices with random values"></a>1.5 Create Matrices with random values</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># create 2x3 numpy array of random number</span></span><br><span class="line">np.random.rand(<span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[0.46957046, 0.76412104, 0.57122412],
+       [0.10765204, 0.48345727, 0.40312917]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># create 2x3 PyTorch array of random number</span></span><br><span class="line">torch.rand(<span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([[0.9986, 0.4618, 0.1816],
+        [0.4418, 0.3110, 0.8741]])
+</code></pre><h4 id="1-6-Seeds"><a href="#1-6-Seeds" class="headerlink" title="1.6 Seeds"></a>1.6 Seeds</h4><blockquote>
+<p>We need seeds to enable reproduction of experimental results. This becomes critical later on where you can easily let people reproduce your code’s output exactly as you’ve produced.</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create seed for random number generation</span></span><br><span class="line">np.random.seed(<span class="number">0</span>)</span><br><span class="line">np.random.rand(<span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[0.5488135 , 0.71518937, 0.60276338],
+       [0.54488318, 0.4236548 , 0.64589411]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a numpy array without seed</span></span><br><span class="line"><span class="comment"># there will be different number each run</span></span><br><span class="line">np.random.rand(<span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[0.43758721, 0.891773  , 0.96366276],
+       [0.38344152, 0.79172504, 0.52889492]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a PyTorch tensor with a seed</span></span><br><span class="line">torch.manual_seed(<span class="number">0</span>)</span><br><span class="line">torch.rand(<span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([[0.4963, 0.7682, 0.0885],
+        [0.1320, 0.3074, 0.6341]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a PyTorch array without seed</span></span><br><span class="line"><span class="comment"># there will be different number each run</span></span><br><span class="line">torch.rand(<span class="number">2</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([[0.4901, 0.8964, 0.4556],
+        [0.6323, 0.3489, 0.4017]])
+</code></pre><h3 id="2-Numpy-and-PyTorch-Convert"><a href="#2-Numpy-and-PyTorch-Convert" class="headerlink" title="2 Numpy and PyTorch Convert"></a>2 Numpy and PyTorch Convert</h3><h4 id="2-1-Numpy-to-Torch"><a href="#2-1-Numpy-to-Torch" class="headerlink" title="2.1 Numpy to Torch"></a>2.1 Numpy to Torch</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a numpy array of 1</span></span><br><span class="line">numpy_arr = np.ones((<span class="number">2</span>, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tpye of class of numpy array</span></span><br><span class="line">print(type(numpy_arr))</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;class &apos;numpy.ndarray&apos;&gt;
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Convert to Torch Tensor</span></span><br><span class="line">torch_tensor = torch.from_numpy(numpy_arr)</span><br><span class="line">print(torch_tensor)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([[1., 1., 1.],
+        [1., 1., 1.]], dtype=torch.float64)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># type of class for PyTorch tensor</span></span><br><span class="line">print(type(torch_tensor))</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;class &apos;torch.Tensor&apos;&gt;
+</code></pre><h4 id="2-2-Numpy-to-PyTorch-Support-datatype"><a href="#2-2-Numpy-to-PyTorch-Support-datatype" class="headerlink" title="2.2 Numpy to PyTorch : Support datatype"></a>2.2 Numpy to PyTorch : Support datatype</h4><table>
+<thead>
+<tr>
+<th>Numpy Type</th>
+<th>PyTorch Tpye </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int64</td>
+<td>LongTensor</td>
+</tr>
+<tr>
+<td>int32</td>
+<td>IntergerTensor</td>
+</tr>
+<tr>
+<td>uint8</td>
+<td>ByteTensor</td>
+</tr>
+<tr>
+<td>float32</td>
+<td>FloatTensor</td>
+</tr>
+<tr>
+<td>float64</td>
+<td>DoubleTensor</td>
+</tr>
+<tr>
+<td>double</td>
+<td>DoubleTensor</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># int64 numpy array to PyTorch long tensor</span></span><br><span class="line">numpy_arr = np.ones((<span class="number">2</span>, <span class="number">3</span>), dtype=np.int64)</span><br><span class="line">torch.from_numpy(numpy_arr)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([[1, 1, 1],
+        [1, 1, 1]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># int32 numpy array to PyTorch int tensor</span></span><br><span class="line">numpy_arr = np.ones((<span class="number">2</span>, <span class="number">3</span>), dtype=np.int32)</span><br><span class="line">torch.from_numpy(numpy_arr)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([[1, 1, 1],
+        [1, 1, 1]], dtype=torch.int32)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># uint8 numpy array to PyTorch byte tensor</span></span><br><span class="line">numpy_arr = np.ones((<span class="number">2</span>, <span class="number">3</span>), dtype=np.uint8)</span><br><span class="line">torch.from_numpy(numpy_arr)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([[1, 1, 1],
+        [1, 1, 1]], dtype=torch.uint8)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># float64 numpy array to PyTorch Double tensor</span></span><br><span class="line">numpy_arr = np.ones((<span class="number">2</span>, <span class="number">3</span>), dtype=np.float64)</span><br><span class="line">torch.from_numpy(numpy_arr)</span><br><span class="line"><span class="comment"># or this</span></span><br><span class="line">numpy_arr = np.ones((<span class="number">2</span>, <span class="number">3</span>), dtype=np.double)</span><br><span class="line">torch.from_numpy(numpy_arr)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([[1., 1., 1.],
+        [1., 1., 1.]], dtype=torch.float64)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># float32 numpy array to PyTorch Float tensor</span></span><br><span class="line">numpy_arr = np.ones((<span class="number">2</span>, <span class="number">3</span>), dtype=np.float64)</span><br><span class="line">torch.from_numpy(numpy_arr)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([[1., 1., 1.],
+        [1., 1., 1.]], dtype=torch.float64)
+</code></pre><h4 id="2-3-Torch-to-Numpy"><a href="#2-3-Torch-to-Numpy" class="headerlink" title="2.3 Torch to Numpy"></a>2.3 Torch to Numpy</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create PyTorch tensor of 1</span></span><br><span class="line">torch_array = torch.ones(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="comment"># default float</span></span><br><span class="line">type(torch_array)</span><br></pre></td></tr></table></figure>
+<pre><code>torch.Tensor
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Convert tensor to numpy</span></span><br><span class="line">torch_to_numpy = torch_array.numpy()</span><br><span class="line">type(torch_to_numpy)</span><br></pre></td></tr></table></figure>
+<pre><code>numpy.ndarray
+</code></pre><h3 id="Tensor-on-CPU-vs-GPU"><a href="#Tensor-on-CPU-vs-GPU" class="headerlink" title="Tensor on CPU vs GPU"></a>Tensor on CPU vs GPU</h3><blockquote>
+<p>todo</p>
+</blockquote>
+<h3 id="4-Tensor-Operation"><a href="#4-Tensor-Operation" class="headerlink" title="4 Tensor Operation"></a>4 Tensor Operation</h3><h4 id="4-1-Resizeing-Tensor"><a href="#4-1-Resizeing-Tensor" class="headerlink" title="4.1 Resizeing Tensor"></a>4.1 Resizeing Tensor</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a 2x2 Tensor</span></span><br><span class="line">a = torch.ones(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([[1., 1.],
+        [1., 1.]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Get the size of Tensor</span></span><br><span class="line">a.size()</span><br></pre></td></tr></table></figure>
+<pre><code>torch.Size([2, 2])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># resize tensor to 4x1</span></span><br><span class="line">a.view(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([1., 1., 1., 1.])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># size of new tensor </span></span><br><span class="line">a.view(<span class="number">4</span>).size()</span><br></pre></td></tr></table></figure>
+<pre><code>torch.Size([4])
+</code></pre><h4 id="4-2-Element-wise-addition"><a href="#4-2-Element-wise-addition" class="headerlink" title="4.2 Element-wise addition"></a>4.2 Element-wise addition</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># two Tensor</span></span><br><span class="line">a = torch.ones(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">b = torch.ones(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment"># addition</span></span><br><span class="line">c = a + b</span><br><span class="line">print(c)</span><br><span class="line">c = torch.add(a, b)</span><br><span class="line">print(c)</span><br><span class="line"><span class="comment"># replace addition</span></span><br><span class="line">c.add_(a)</span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([[2., 2.],
+        [2., 2.]])
+tensor([[2., 2.],
+        [2., 2.]])
+tensor([[3., 3.],
+        [3., 3.]])
+</code></pre><h4 id="4-3-Element-wise-Subtraction"><a href="#4-3-Element-wise-Subtraction" class="headerlink" title="4.3 Element-wise Subtraction"></a>4.3 Element-wise Subtraction</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># subtraction</span></span><br><span class="line">c = a - b</span><br><span class="line">print(c)</span><br><span class="line">c = a.sub(b)</span><br><span class="line">print(c)</span><br><span class="line"><span class="comment"># replace subtraction</span></span><br><span class="line">a.sub_(b)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([[0., 0.],
+        [0., 0.]])
+tensor([[0., 0.],
+        [0., 0.]])
+tensor([[0., 0.],
+        [0., 0.]])
+</code></pre><h4 id="4-4-Element-wise-Multiplication"><a href="#4-4-Element-wise-Multiplication" class="headerlink" title="4.4 Element-wise Multiplication"></a>4.4 Element-wise Multiplication</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a = torch.ones(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">b = torch.zeros(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">print(<span class="string">'a'</span>, a)</span><br><span class="line">print(<span class="string">'b'</span>, b)</span><br><span class="line">print(<span class="string">'a*b'</span>, a * b)</span><br><span class="line"><span class="comment"># not in-place</span></span><br><span class="line">print(<span class="string">'a*b'</span>, torch.mul(a, b))</span><br><span class="line">print(a)</span><br><span class="line"><span class="comment"># in-place</span></span><br><span class="line">print(<span class="string">'a*b'</span>, a.mul_(b))</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<pre><code>a tensor([[1., 1.],
+        [1., 1.]])
+b tensor([[0., 0.],
+        [0., 0.]])
+a*b tensor([[0., 0.],
+        [0., 0.]])
+a*b tensor([[0., 0.],
+        [0., 0.]])
+tensor([[1., 1.],
+        [1., 1.]])
+a*b tensor([[0., 0.],
+        [0., 0.]])
+tensor([[0., 0.],
+        [0., 0.]])
+</code></pre><p>4.5 Element-wise Division</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = torch.ones(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">b = torch.zeros(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">print(<span class="string">'a'</span>, a)</span><br><span class="line">print(<span class="string">'b'</span>, b)</span><br><span class="line">print(<span class="string">'b / a'</span>, b / a)</span><br><span class="line"><span class="comment"># not in-place</span></span><br><span class="line">print(<span class="string">'b / a'</span>, torch.div(b, a))</span><br><span class="line"><span class="comment"># in-place</span></span><br><span class="line">print(<span class="string">'b / a'</span>, b.div_(a))</span><br></pre></td></tr></table></figure>
+<pre><code>a tensor([[1., 1.],
+        [1., 1.]])
+b tensor([[0., 0.],
+        [0., 0.]])
+b / a tensor([[0., 0.],
+        [0., 0.]])
+b / a tensor([[0., 0.],
+        [0., 0.]])
+b / a tensor([[0., 0.],
+        [0., 0.]])
+</code></pre><h4 id="4-6-Tensor-Mean"><a href="#4-6-Tensor-Mean" class="headerlink" title="4.6 Tensor Mean"></a>4.6 Tensor Mean</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = torch.Tensor([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]])</span><br><span class="line">a.size()</span><br></pre></td></tr></table></figure>
+<pre><code>torch.Size([2, 5])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># get Tensor mean</span></span><br><span class="line">a.mean(dim=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([3.5000, 4.5000, 5.5000, 6.5000, 7.5000])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mean on second dimension</span></span><br><span class="line">a.mean(dim=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([3., 8.])
+</code></pre><h4 id="4-7-Tensor-Standard-Deviation"><a href="#4-7-Tensor-Standard-Deviation" class="headerlink" title="4.7 Tensor Standard Deviation"></a>4.7 Tensor Standard Deviation</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = torch.Tensor([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>])</span><br><span class="line">a.std(dim=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor(3.0277)
+</code></pre><h3 id="5-Gradient"><a href="#5-Gradient" class="headerlink" title="5. Gradient"></a>5. Gradient</h3><h4 id="5-1-Create-Tensor-whtie-Gradient"><a href="#5-1-Create-Tensor-whtie-Gradient" class="headerlink" title="5.1 Create Tensor whtie Gradient"></a>5.1 Create Tensor whtie Gradient</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = torch.ones((<span class="number">2</span>, <span class="number">3</span>), requires_grad=<span class="literal">True</span>)</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([[1., 1., 1.],
+        [1., 1., 1.]], requires_grad=True)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.requires_grad</span><br></pre></td></tr></table></figure>
+<pre><code>True
+</code></pre><h4 id="5-2-Manually-and-Automatically-Calculation-Gradients"><a href="#5-2-Manually-and-Automatically-Calculation-Gradients" class="headerlink" title="5.2 Manually and Automatically Calculation Gradients"></a>5.2 Manually and Automatically Calculation Gradients</h4><blockquote>
+<p>$$<br> define: \\<br> y_i = 5(x_i + 1)^2<br>$$</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = torch.ones(<span class="number">2</span>, requires_grad=<span class="literal">True</span>)</span><br><span class="line">print(x)</span><br><span class="line"><span class="comment"># define y</span></span><br><span class="line">y = <span class="number">5</span> * (x  + <span class="number">1</span>) ** <span class="number">2</span></span><br><span class="line">print(y)</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([1., 1.], requires_grad=True)
+tensor([20., 20.], grad_fn=&lt;MulBackward0&gt;)
+</code></pre><blockquote>
+<p>$$<br> define \\<br> o = \frac{1}{2}\sum_{i}{y_i}<br>$$</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">o = (<span class="number">1</span>/<span class="number">2</span>) * torch.sum(y)</span><br><span class="line">o</span><br></pre></td></tr></table></figure>
+<pre><code>tensor(20., grad_fn=&lt;MulBackward0&gt;)
+</code></pre><p>$$<br>calculationg derivative \\<br>\frac{\partial o}{\partial x_i} = 5(x_i + 1)<br>$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># get first derivative</span></span><br><span class="line">o.backward()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.grad</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([10., 10.])
+</code></pre><blockquote>
+<p>逃课之人终将逃不过需要补课的命运.<br>                              —鲁迅</p>
+</blockquote>
+<h3 id="6-Basic-Concepts"><a href="#6-Basic-Concepts" class="headerlink" title="6. Basic Concepts"></a>6. Basic Concepts</h3><blockquote>
+<p>线性代数提供一种表达以及运算线性方程组的完备方法，例如下列方程组<br>$$<br>4x_1 - 5x_2 = -13 \\<br>-2x_1 + 3x_2 = 9<br>$$<br>上式子中有两个方程以及两个变量，这个是高中的代数知识啦，可以求的$x_1$ 和$x_2$唯一解，如果用矩阵的表达方法，可以写成这样<br>$$<br>Ax = b \\<br>with, \\<br>A = \left[<br> \begin{matrix}<br>   4 &amp; -5 \\<br>   -2 &amp; 3<br>  \end{matrix}<br>  \right] ,<br>  b =  \left[<br> \begin{matrix}<br>   -13 \\<br>   9<br>  \end{matrix}<br>  \right]<br>$$<br>可以看到这样的表达方式不为别的，就是帅(手动狗头)。。</p>
+</blockquote>
+<h4 id="6-1-Basic-Notation"><a href="#6-1-Basic-Notation" class="headerlink" title="6.1 Basic Notation"></a>6.1 Basic Notation</h4><h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
+<li><a href="https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_matrices/" target="_blank" rel="noopener">https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_matrices/</a></li>
+<li><a href="http://59.80.44.50/cs229.stanford.edu/section/cs229-linalg.pdf" target="_blank" rel="noopener">http://59.80.44.50/cs229.stanford.edu/section/cs229-linalg.pdf</a></li>
+</ol>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PyTorch/" rel="tag"><i class="fa fa-tag"></i>PyTorch</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/13/linearmodel/" rel="prev">
+                <i class="fa fa-chevron-left"></i> Linear Model
+              </a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/12/drlt/" rel="next">
+                Practical Deep Reinforcement Learning with PyTorch <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      
+
+        
+          
+  
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview" sidebar-panel>
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/hy.jpeg" alt="qwertymjs" itemprop="image">
+          <p class="site-author-name" itemprop="name">qwertymjs</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">悄悄是别离的笙箫，沉默是今晚的康桥。</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qwertymjs" target="_blank">
+                  <i class="fa fa-github"></i> GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:mojunsheng2014@163.com" target="_blank">
+                  <i class="fa fa-e-mail"></i> E-Mail
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Crete-Matrix"><span class="nav-number">1.</span> <span class="nav-text">1 Crete Matrix</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Create-python-list"><span class="nav-number">1.1.</span> <span class="nav-text">1. 1 Create python list</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2Create-numpy-array-via-python-list"><span class="nav-number">1.2.</span> <span class="nav-text">1. 2Create numpy array via python list</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-Convert-numpy-array-to-PyTorch-tensor"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Convert numpy array to PyTorch tensor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-Create-Matrices-with-Default-Values"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Create Matrices with Default Values</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-Create-Matrices-with-random-values"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 Create Matrices with random values</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-Seeds"><span class="nav-number">1.6.</span> <span class="nav-text">1.6 Seeds</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Numpy-and-PyTorch-Convert"><span class="nav-number">2.</span> <span class="nav-text">2 Numpy and PyTorch Convert</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-Numpy-to-Torch"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Numpy to Torch</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-Numpy-to-PyTorch-Support-datatype"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 Numpy to PyTorch : Support datatype</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-Torch-to-Numpy"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Torch to Numpy</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tensor-on-CPU-vs-GPU"><span class="nav-number">3.</span> <span class="nav-text">Tensor on CPU vs GPU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Tensor-Operation"><span class="nav-number">4.</span> <span class="nav-text">4 Tensor Operation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-Resizeing-Tensor"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 Resizeing Tensor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-Element-wise-addition"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 Element-wise addition</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-Element-wise-Subtraction"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 Element-wise Subtraction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-Element-wise-Multiplication"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 Element-wise Multiplication</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-Tensor-Mean"><span class="nav-number">4.5.</span> <span class="nav-text">4.6 Tensor Mean</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-7-Tensor-Standard-Deviation"><span class="nav-number">4.6.</span> <span class="nav-text">4.7 Tensor Standard Deviation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Gradient"><span class="nav-number">5.</span> <span class="nav-text">5. Gradient</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-Create-Tensor-whtie-Gradient"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 Create Tensor whtie Gradient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-Manually-and-Automatically-Calculation-Gradients"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 Manually and Automatically Calculation Gradients</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Basic-Concepts"><span class="nav-number">6.</span> <span class="nav-text">6. Basic Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-Basic-Notation"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 Basic Notation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#References"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+	  </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat" aria-hidden="true"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qwertymjs</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="#">
+    FreeSky
+  </a>(Reserved)
+
+  
+  <span id="busuanzi_container_site_uv">
+     &nbsp; | &nbsp;  用户量: <span id="busuanzi_value_site_uv"></span>
+  </span>
+  <span id="busuanzi_container_site_pv">
+    &nbsp; | &nbsp;  总访问量: <span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/others/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/others/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/others/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/others/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/others/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    var $aboutContent = $('#posts-about');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && $aboutContent.length === 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+  
+     <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("MNmN8wxC6f8wRSiT7MEzOFKa-gzGzoHsz", "T3r2dLr1mNzJYsRjDq1vjpg1");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = $(document.getElementById(url)).text() + ': 0';
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":210,"height":420,"vOffset":15},"mobile":{"show":false},"log":false});</script></body>
+</html>

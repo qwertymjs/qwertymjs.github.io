@@ -1,0 +1,728 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head><meta name="generator" content="Hexo 3.8.0">
+  
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/others/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
+
+
+  
+    <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+<link rel="stylesheet" type="text/css" href="/others/font-awesome/css/font-awesome.min.css?v=4.4.0">
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2">
+
+
+    <meta name="description" content="悄悄是别离的笙箫，沉默是今晚的康桥。">
+
+
+
+  <meta name="keywords" content="Hexo, next">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Qwertymjs's Blog" type="application/atom+xml">
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2">
+
+
+<meta name="description" content="DeepGuideCS229@StanfordVideo     Course  Sessions Topic     [Lecture 1] 机器学习的动机与应用 The Motivation &amp;amp; Applications of Machine Learning, The Logistics of the Class, The Definition of Machine Learning">
+<meta property="og:type" content="website">
+<meta property="og:title" content="work-page">
+<meta property="og:url" content="http://qwertymjs.github.io/work-page/index.html">
+<meta property="og:site_name" content="Qwertymjs&#39;s Blog">
+<meta property="og:description" content="DeepGuideCS229@StanfordVideo     Course  Sessions Topic     [Lecture 1] 机器学习的动机与应用 The Motivation &amp;amp; Applications of Machine Learning, The Logistics of the Class, The Definition of Machine Learning">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-15T16:09:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="work-page">
+<meta name="twitter:description" content="DeepGuideCS229@StanfordVideo     Course  Sessions Topic     [Lecture 1] 机器学习的动机与应用 The Motivation &amp;amp; Applications of Machine Learning, The Logistics of the Class, The Definition of Machine Learning">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post'
+  };
+</script>
+
+
+
+  <title>
+  
+
+  
+    work-page | Qwertymjs's Blog
+  
+</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div id="container" class="container one-column ">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-work-page">
+          <a href="/work-page" rel="section">
+            
+              <i class="menu-item-icon fa fa-gear"></i> <br>
+            
+            通天塔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-study-page">
+          <a href="/study-page" rel="section">
+            
+              <i class="menu-item-icon fa fa-compass"></i> <br>
+            
+            奇衡三
+          </a>
+        </li>
+      
+
+      
+      
+	  	<span style="font-size:14px;float:right;padding:39px 40px 0 0;">——悄悄是别离的笙箫，沉默是今晚的康桥。</span>
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+
+        	<div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+    
+      <h1 id="DeepGuide"><a href="#DeepGuide" class="headerlink" title="DeepGuide"></a>DeepGuide</h1><h2 id="CS229-Stanford"><a href="#CS229-Stanford" class="headerlink" title="CS229@Stanford"></a>CS229@Stanford</h2><h3 id="Video"><a href="#Video" class="headerlink" title="Video"></a>Video</h3><blockquote>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Course  Sessions</th>
+<th>Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Lecture 1] <a href="http://open.163.com/movie/2008/1/M/C/M6SGF6VB4_M6SGHFBMC.html" target="_blank" rel="noopener">机器学习的动机与应用</a></td>
+<td>The Motivation &amp; Applications of Machine Learning, <br>The Logistics of the Class, <br>The Definition of Machine Learning, <br>The Overview of Supervised Learning, <br>The Overview of Learning Theory, <br>The Overview of Unsupervised Learning, <br>The Overview of Reinforcement Learning</td>
+</tr>
+<tr>
+<td>[Lecture 2] <a href="http://open.163.com/movie/2008/1/B/O/M6SGF6VB4_M6SGHJ9BO.html" target="_blank" rel="noopener">监督学习应用.梯度下降</a></td>
+<td>An Application of Supervised Learning - Autonomous Deriving, <br>ALVINN, <br>Linear Regression, <br>Gradient Descent, <br>Batch Gradient Descent, <br>Stochastic Gradient Descent, <br>Matrix Derivative Notation for Deriving Normal Equations, <br>Derivation of Normal Equations</td>
+</tr>
+<tr>
+<td>[Lecture 3] <a href="http://open.163.com/movie/2008/1/E/B/M6SGF6VB4_M6SGHM4EB.html" target="_blank" rel="noopener">欠拟合与过拟合的概念</a></td>
+<td>The Concept of Underfitting and Overfitting, <br>The Concept of Parametric Algorithms and Non-parametric Algorithms, <br>Locally Weighted Regression, <br>The Probabilistic Interpretation of Linear Regression, <br>The motivation of Logistic Regression, <br>Logistic Regression, <br>Perceptron</td>
+</tr>
+<tr>
+<td>[Lecture 4] <a href="http://open.163.com/movie/2008/1/E/D/M6SGF6VB4_M6SGHKAED.html" target="_blank" rel="noopener">牛顿方法</a></td>
+<td>Newton’s Method, Exponential Family,<br>Bernoulli Example, Gaussian Example,<br>General Linear Models (GLMs), Multinomial Example, <br>Softmax Regression</td>
+</tr>
+<tr>
+<td>[Lecture 5] <a href="http://open.163.com/movie/2008/1/A/R/M6SGF6VB4_M6SGHMFAR.html" target="_blank" rel="noopener">生成学习算法</a></td>
+<td>Discriminative Algorithms, <br>Generative Algorithms, <br>Gaussian Discriminant Analysis (GDA), <br>GDA and Logistic Regression, <br>Naive Bayes, Laplace Smoothing</td>
+</tr>
+<tr>
+<td>[Lecture 6] <a href="http://open.163.com/movie/2008/1/7/H/M6SGF6VB4_M6SGJVV7H.html" target="_blank" rel="noopener">朴素贝叶斯算法</a></td>
+<td>Multinomial Event Model,<br>Non-linear Classifiers, Neural Network,<br>Applications of Neural Network, <br>Intuitions about Support Vector Machine (SVM),<br>Notation for SVM, <br>Functional and Geometric Margins</td>
+</tr>
+<tr>
+<td>[Lecture7] <a href="http://open.163.com/movie/2008/1/C/6/M6SGF6VB4_M6SGJVMC6.html" target="_blank" rel="noopener">最优间隔分类器问题</a></td>
+<td>Optimal Margin Classifier, <br>Lagrange Duality, Karush-Kuhn-Tucker (KKT) Conditions,<br>SVM Dual, <br>The Concept of Kernels</td>
+</tr>
+<tr>
+<td>[Lecture 8] <a href="http://open.163.com/movie/2008/1/9/3/M6SGF6VB4_M6SGJVA93.html" target="_blank" rel="noopener">顺序最小优化算法</a></td>
+<td>Kernels, Mercer’s Theorem, <br>Non-linear Decision Boundaries and Soft Margin SVM, <br>Coordinate Ascent Algorithm, <br>The Sequential Minimization Optimization (SMO) Algorithm, <br>Applications of SVM</td>
+</tr>
+<tr>
+<td>[Lecture 9] <a href="http://open.163.com/movie/2008/1/F/H/M6SGF6VB4_M6SGJV3FH.html" target="_blank" rel="noopener">经验风险最小化</a></td>
+<td>Bias/variance Tradeoff, <br>Empirical Risk Minimization (ERM), <br>The Union Bound, Hoeffding Inequality, <br>Uniform Convergence - The Case of Finite H, <br>Sample Complexity Bound, Error Bound, <br>Uniform Convergence Theorem &amp; Corollary</td>
+</tr>
+<tr>
+<td>[Lecture 10] <a href="http://open.163.com/movie/2008/1/U/O/M6SGF6VB4_M6SGJURUO.html" target="_blank" rel="noopener">特征选择</a></td>
+<td>Uniform Convergence - The Case of Infinite H,<br> The Concept of ‘Shatter’ and VC Dimension,<br> SVM Example, Model Selection, <br>Cross Validation, Feature Selection</td>
+</tr>
+<tr>
+<td>[Lecture 11] <a href="http://open.163.com/movie/2008/1/L/M/M6SGF6VB4_M6SGKG5LM.html" target="_blank" rel="noopener">贝叶斯统计正则化</a></td>
+<td>Bayesian Statistics and Regularization, <br>Online Learning,<br> Advice for Applying Machine Learning Algorithms,<br> Debugging/fixing Learning Algorithms, <br>Diagnostics for Bias &amp; Variance,<br> Optimization Algorithm Diagnostics,<br> Diagnostic Example - Autonomous Helicopter,<br> Error Analysis, Getting Started on a Learning Problem</td>
+</tr>
+<tr>
+<td>[Lecture 12] <a href="http://open.163.com/movie/2008/1/O/T/M6SGF6VB4_M6SGKGMOT.html" target="_blank" rel="noopener">K-means算法</a></td>
+<td>The Concept of Unsupervised Learning,<br> K-means Clustering Algorithm, <br>K-means Algorithm, <br>Mixtures of Gaussians and the EM Algorithm,<br> Jensen’s Inequality, The EM Algorithm, Summary</td>
+</tr>
+<tr>
+<td>[Lecture 13] <a href="http://open.163.com/movie/2008/1/L/3/M6SGF6VB4_M6SGKK6L3.html" target="_blank" rel="noopener">高斯混合模型</a></td>
+<td>Mixture of Gaussian, <br>Mixture of Naive Bayes - Text clustering (EM Application),<br> Factor Analysis, Restrictions on a Covariance Matrix, <br>The Factor Analysis Model, EM for Factor Analysis</td>
+</tr>
+<tr>
+<td>[Lecture 14] <a href="http://open.163.com/movie/2008/1/M/E/M6SGF6VB4_M6SGKIEME.html" target="_blank" rel="noopener">主成分分析法</a></td>
+<td>The Factor Analysis Model, EM for Factor Analysis,<br> Principal Component Analysis (PCA),<br> PCA as a Dimensionality Reduction Algorithm,<br> Applications of PCA, <br>Face Recognition by Using PCA</td>
+</tr>
+<tr>
+<td>[Lecture 15] <a href="http://open.163.com/movie/2008/1/J/V/M6SGF6VB4_M6SGKINJV.html" target="_blank" rel="noopener">奇异值分解</a></td>
+<td>Latent Semantic Indexing (LSI), <br>Singular Value Decomposition (SVD) Implementation,<br> Independent Component Analysis (ICA),<br> The Application of ICA, <br>Cumulative Distribution Function (CDF),<br> ICA Algorithm, The Applications of ICA</td>
+</tr>
+<tr>
+<td>[Lecture 16] <a href="http://open.163.com/movie/2008/1/2/N/M6SGF6VB4_M6SGKSC2N.html" target="_blank" rel="noopener">马尔可夫决策过程</a></td>
+<td>Applications of Reinforcement Learning,<br> Markov Decision Process (MDP), <br>Defining Value &amp; Policy Functions, <br>Value Function, Optimal Value Function,<br> Value Iteration, Policy Iteration</td>
+</tr>
+<tr>
+<td>[Lecture 17] <a href="http://open.163.com/movie/2008/1/N/6/M6SGF6VB4_M6SGKVGN6.html" target="_blank" rel="noopener">离散与维数灾难</a></td>
+<td>Generalization to Continuous States, <br>Discretization &amp; Curse of Dimensionality,<br> Models/Simulators, <br>Fitted Value Iteration, <br>Finding Optimal Policy</td>
+</tr>
+<tr>
+<td>[Lecture 18] <a href="http://open.163.com/movie/2008/1/1/H/M6SGF6VB4_M6SGL3P1H.html" target="_blank" rel="noopener">线性二次型调节控制</a></td>
+<td>State-action Rewards, Finite Horizon MDPs, <br>The Concept of Dynamical Systems,<br> Examples of Dynamical Models, <br>Linear Quadratic Regulation (LQR),<br> Linearizing a Non-Linear Model, <br>Computing Rewards, Riccati Equation</td>
+</tr>
+<tr>
+<td>[Lecture 19] <a href="http://open.163.com/movie/2008/1/3/5/M6SGF6VB4_M6SGL2R35.html" target="_blank" rel="noopener">微分动态规划</a></td>
+<td>Advice for Applying Machine Learning,<br> Debugging Reinforcement Learning (RL) Algorithm,<br> Linear Quadratic Regularization (LQR),<br> Differential Dynamic Programming (DDP),<br> Kalman Filter &amp; Linear Quadratic Gaussian (LQG), <br>Predict/update Steps of Kalman Filter, <br>Linear Quadratic Gaussian (LQG)</td>
+</tr>
+<tr>
+<td>[Lecture 20] <a href="http://open.163.com/movie/2008/1/E/4/M6SGF6VB4_M6SGL3CE4.html" target="_blank" rel="noopener">策略搜索</a></td>
+<td>Partially Observable MDPs (POMDPs),<br> Policy Search, Reinforce Algorithm, <br>Pegasus Algorithm, <br>Pegasus Policy Search, <br>Applications of Reinforcement Learning</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Syllabus-and-Course-Schedule"><a href="#Syllabus-and-Course-Schedule" class="headerlink" title="Syllabus and Course Schedule"></a>Syllabus and Course Schedule</h3><blockquote>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Lecture Handouts</th>
+<th>Topic</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://see.stanford.edu/materials/aimlcs229/cs229-notes1.pdf" target="_blank" rel="noopener">cs229-notes1.pdf</a></td>
+<td>Linear Regression, Classification and logistic regression, Generalized Linear Models</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://see.stanford.edu/materials/aimlcs229/cs229-notes2.pdf" target="_blank" rel="noopener">cs229-notes2.pdf</a></td>
+<td>Generative Learning algorithms</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://see.stanford.edu/materials/aimlcs229/cs229-notes3.pdf" target="_blank" rel="noopener">cs229-notes3.pdf</a></td>
+<td>Support Vector Machines</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://see.stanford.edu/materials/aimlcs229/cs229-notes4.pdf" target="_blank" rel="noopener">cs229-notes4.pdf</a></td>
+<td>Learning Theory</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://see.stanford.edu/materials/aimlcs229/cs229-notes5.pdf" target="_blank" rel="noopener">cs229-notes5.pdf</a></td>
+<td>Regularization and model selection</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://see.stanford.edu/materials/aimlcs229/cs229-notes6.pdf" target="_blank" rel="noopener">cs229-notes6.pdf</a></td>
+<td>The perceptron and large margin classifiers</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://see.stanford.edu/materials/aimlcs229/cs229-notes7a.pdf" target="_blank" rel="noopener">cs229-notes7a.pdf</a></td>
+<td>The k-means clustering algorithm</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://see.stanford.edu/materials/aimlcs229/cs229-notes7b.pdf" target="_blank" rel="noopener">cs229-notes7b.pdf</a></td>
+<td>Mixtures of Gaussians and the EM algorithm</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://see.stanford.edu/materials/aimlcs229/cs229-notes8.pdf" target="_blank" rel="noopener">cs229-notes8.pdf</a></td>
+<td>The EM algorithm</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://see.stanford.edu/materials/aimlcs229/cs229-notes9.pdf" target="_blank" rel="noopener">cs229-notes9.pdf</a></td>
+<td>Factor analysis</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://see.stanford.edu/materials/aimlcs229/cs229-notes10.pdf" target="_blank" rel="noopener">cs229-notes10.pdf</a></td>
+<td>Principal components analysis</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://see.stanford.edu/materials/aimlcs229/cs229-notes11.pdf" target="_blank" rel="noopener">cs229-notes11.pdf</a></td>
+<td>Independent Components Analysis</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://see.stanford.edu/materials/aimlcs229/cs229-notes12.pdf" target="_blank" rel="noopener">cs229-notes12.pdf</a></td>
+<td>Reinforcement Learning and Control</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Reading-Material"><a href="#Reading-Material" class="headerlink" title="Reading Material"></a>Reading Material</h3><blockquote>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><strong>Section Notes</strong></th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Linear Algebra Review and Reference [<a href="http://cs229.stanford.edu/section-spring2019/cs229-linalg.pdf" target="_blank" rel="noopener">pdf</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>2. Probability Theory Review [<a href="http://cs229.stanford.edu/section/cs229-prob.pdf" target="_blank" rel="noopener">pdf</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>3. Convex Optimization Overview, Part I [<a href="http://cs229.stanford.edu/section/cs229-cvxopt.pdf" target="_blank" rel="noopener">pdf</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>4. Convex Optimization Overview, Part II  [<a href="http://cs229.stanford.edu/section/cs229-cvxopt2.pdf" target="_blank" rel="noopener">pdf</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>5. Hidden Markov Models [<a href="http://cs229.stanford.edu/section/cs229-hmm.pdf" target="_blank" rel="noopener">pdf</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>6. The Multivariate Gaussian Distribution [<a href="http://cs229.stanford.edu/section/gaussians.pdf" target="_blank" rel="noopener">pdf</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>7. More on Gaussian Distribution [<a href="http://cs229.stanford.edu/section/more_on_gaussians.pdf" target="_blank" rel="noopener">pdf</a>]</td>
+<td></td>
+</tr>
+<tr>
+<td>8. Gaussian Processes [<a href="http://cs229.stanford.edu/section/cs229-gaussian_processes.pdf" target="_blank" rel="noopener">pdf</a>]</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Assignments"><a href="#Assignments" class="headerlink" title="Assignments"></a>Assignments</h3><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3>
+    
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      
+
+        
+          
+  
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+      
+
+      <section class="site-overview" sidebar-panel sidebar-panel-active>
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/hy.jpeg" alt="qwertymjs" itemprop="image">
+          <p class="site-author-name" itemprop="name">qwertymjs</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">悄悄是别离的笙箫，沉默是今晚的康桥。</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qwertymjs" target="_blank">
+                  <i class="fa fa-github"></i> GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:mojunsheng2014@163.com" target="_blank">
+                  <i class="fa fa-e-mail"></i> E-Mail
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+	  </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat" aria-hidden="true"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qwertymjs</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="#">
+    FreeSky
+  </a>(Reserved)
+
+  
+  <span id="busuanzi_container_site_uv">
+     &nbsp; | &nbsp;  用户量: <span id="busuanzi_value_site_uv"></span>
+  </span>
+  <span id="busuanzi_container_site_pv">
+    &nbsp; | &nbsp;  总访问量: <span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/others/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/others/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/others/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/others/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/others/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+  
+     <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("MNmN8wxC6f8wRSiT7MEzOFKa-gzGzoHsz", "T3r2dLr1mNzJYsRjDq1vjpg1");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = $(document.getElementById(url)).text() + ': 0';
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":210,"height":420,"vOffset":15},"mobile":{"show":false},"log":false});</script></body>
+</html>
