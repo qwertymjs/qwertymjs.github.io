@@ -47,18 +47,18 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2">
 
 
-<meta name="description" content="Problem Set #1 监督学习(Supervised Learning) Logistic regression (a) 已知逻辑回归的cost function如下： $$J(\theta) = \frac{1}{m}\sum^{m}{i=1}\log(1+e^{-y^{(i)}\theta^{T}x^{(i)}}) = -\frac{1}{m}\sum^{m}{i=1}\log(h_{">
+<meta name="description" content="Problem Set #1 监督学习(Supervised Learning) Logistic regression (a) 已知逻辑回归的cost function如下： J(\theta) = \frac{1}{m}\sum^{m}_{i=1}\log(1+e^{-y^{(i)}\theta^{T}x^{(i)}}) = -\frac{1}{m}\sum^{m}_{i=1}\log(h_{">
 <meta name="keywords" content="Note">
 <meta property="og:type" content="article">
 <meta property="og:title" content="吴恩达-机器学习-学习笔记">
 <meta property="og:url" content="http://qwertymjs.github.io/2019/05/27/cs229/index.html">
 <meta property="og:site_name" content="Qwertymjs&#39;s Blog">
-<meta property="og:description" content="Problem Set #1 监督学习(Supervised Learning) Logistic regression (a) 已知逻辑回归的cost function如下： $$J(\theta) = \frac{1}{m}\sum^{m}{i=1}\log(1+e^{-y^{(i)}\theta^{T}x^{(i)}}) = -\frac{1}{m}\sum^{m}{i=1}\log(h_{">
+<meta property="og:description" content="Problem Set #1 监督学习(Supervised Learning) Logistic regression (a) 已知逻辑回归的cost function如下： J(\theta) = \frac{1}{m}\sum^{m}_{i=1}\log(1+e^{-y^{(i)}\theta^{T}x^{(i)}}) = -\frac{1}{m}\sum^{m}_{i=1}\log(h_{">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-27T07:05:19.381Z">
+<meta property="og:updated_time" content="2019-05-27T14:01:55.361Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吴恩达-机器学习-学习笔记">
-<meta name="twitter:description" content="Problem Set #1 监督学习(Supervised Learning) Logistic regression (a) 已知逻辑回归的cost function如下： $$J(\theta) = \frac{1}{m}\sum^{m}{i=1}\log(1+e^{-y^{(i)}\theta^{T}x^{(i)}}) = -\frac{1}{m}\sum^{m}{i=1}\log(h_{">
+<meta name="twitter:description" content="Problem Set #1 监督学习(Supervised Learning) Logistic regression (a) 已知逻辑回归的cost function如下： J(\theta) = \frac{1}{m}\sum^{m}_{i=1}\log(1+e^{-y^{(i)}\theta^{T}x^{(i)}}) = -\frac{1}{m}\sum^{m}_{i=1}\log(h_{">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -264,10 +264,8 @@
         <span itemprop="articleBody"><h3 id="Problem-Set-1-监督学习-Supervised-Learning"><a href="#Problem-Set-1-监督学习-Supervised-Learning" class="headerlink" title="Problem Set #1 监督学习(Supervised Learning)"></a>Problem Set #1 监督学习(Supervised Learning)</h3><ol>
 <li><p>Logistic regression</p>
 <p>(a) 已知逻辑回归的cost function如下：</p>
-<p>$$J(\theta) = \frac{1}{m}\sum^{m}<em>{i=1}\log(1+e^{-y^{(i)}\theta^{T}x^{(i)}}) = -\frac{1}{m}\sum^{m}</em>{i=1}\log(h_{\theta}(y^{(i)}x^{(i)}))$$</p>
-<p>并且$y^{(i)} \in {-1, + 1}, h_{\theta}(x) = g(\theta^Tx), g(z) = 1/(1+e^{-z}).$证明对于此cost function的Hessian $H$，对任意向量$z$, 有：</p>
-<p>$$z^THz \ge 0.$$</p>
-<p>解：先求$J(\theta)$一阶导数，$$</p>
+<script type="math/tex; mode=display">J(\theta) = \frac{1}{m}\sum^{m}_{i=1}\log(1+e^{-y^{(i)}\theta^{T}x^{(i)}}) = -\frac{1}{m}\sum^{m}_{i=1}\log(h_{\theta}(y^{(i)}x^{(i)}))</script><p>并且$y^{(i)} \in \{-1, + 1\}, h_{\theta}(x) = g(\theta^Tx), g(z) = 1/(1+e^{-z}).$证明对于此cost function的Hessian $H$，对任意向量$z$, 有：</p>
+<script type="math/tex; mode=display">z^THz \ge 0.</script><p>解：先求$J(\theta)$一阶导数，</p>
 </li>
 </ol>
 </span>
