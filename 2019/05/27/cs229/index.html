@@ -47,18 +47,18 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2">
 
 
-<meta name="description" content="悄悄是别离的笙箫，沉默是今晚的康桥。">
+<meta name="description" content="Problem Set #1 监督学习(Supervised Learning) Logistic regression (a) 已知逻辑回归的cost function如下： $J(\theta) = \frac{1}{m}\sum^{m}{i=1}\log(1+e^{-y^{(i)}\theta^{T}x^{(i)}}) = -\frac{1}{m}\sum^{m}{i=1}\log(h_{\">
 <meta name="keywords" content="Note">
 <meta property="og:type" content="article">
 <meta property="og:title" content="吴恩达-机器学习-学习笔记">
-<meta property="og:url" content="http://qwertymjs.github.io/2019/05/26/cs229/index.html">
+<meta property="og:url" content="http://qwertymjs.github.io/2019/05/27/cs229/index.html">
 <meta property="og:site_name" content="Qwertymjs&#39;s Blog">
-<meta property="og:description" content="悄悄是别离的笙箫，沉默是今晚的康桥。">
+<meta property="og:description" content="Problem Set #1 监督学习(Supervised Learning) Logistic regression (a) 已知逻辑回归的cost function如下： $J(\theta) = \frac{1}{m}\sum^{m}{i=1}\log(1+e^{-y^{(i)}\theta^{T}x^{(i)}}) = -\frac{1}{m}\sum^{m}{i=1}\log(h_{\">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-26T15:18:00.252Z">
+<meta property="og:updated_time" content="2019-05-27T05:25:42.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吴恩达-机器学习-学习笔记">
-<meta name="twitter:description" content="悄悄是别离的笙箫，沉默是今晚的康桥。">
+<meta name="twitter:description" content="Problem Set #1 监督学习(Supervised Learning) Logistic regression (a) 已知逻辑回归的cost function如下： $J(\theta) = \frac{1}{m}\sum^{m}{i=1}\log(1+e^{-y^{(i)}\theta^{T}x^{(i)}}) = -\frac{1}{m}\sum^{m}{i=1}\log(h_{\">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -216,8 +216,8 @@
           
           <span class="post-time">
             Posted on
-            <time itemprop="dateCreated" datetime="2019-05-26T22:05:54+08:00" content="2019-05-26">
-              2019-05-26 22:05
+            <time itemprop="dateCreated" datetime="2019-05-27T12:05:54+08:00" content="2019-05-27">
+              2019-05-27 12:05
             </time>
           </span>
 
@@ -245,7 +245,7 @@
           
 
           
-            <span id="/2019/05/26/cs229/" class="leancloud_visitors" data-flag-title="吴恩达-机器学习-学习笔记">
+            <span id="/2019/05/27/cs229/" class="leancloud_visitors" data-flag-title="吴恩达-机器学习-学习笔记">
             &nbsp; | &nbsp;   
             views
             </span>
@@ -261,7 +261,15 @@
       
 
       
-        <span itemprop="articleBody"></span>
+        <span itemprop="articleBody"><h3 id="Problem-Set-1-监督学习-Supervised-Learning"><a href="#Problem-Set-1-监督学习-Supervised-Learning" class="headerlink" title="Problem Set #1 监督学习(Supervised Learning)"></a>Problem Set #1 监督学习(Supervised Learning)</h3><ol>
+<li><p>Logistic regression</p>
+<p>(a) 已知逻辑回归的cost function如下：</p>
+<p>$J(\theta) = \frac{1}{m}\sum^{m}<em>{i=1}\log(1+e^{-y^{(i)}\theta^{T}x^{(i)}}) = -\frac{1}{m}\sum^{m}</em>{i=1}\log(h_{\theta}(y^{(i)}x^{(i)}))$</p>
+<p>并且$y^{(i)} \in {-1, + 1}, h_{\theta}(x) = g(\theta^Tx), g(z) = 1/(1+e^{-z}).$证明对于此cost function的Hessian $H$，对任意向量$z$, 有：</p>
+<p>$$z^THz \ge 0.$$</p>
+</li>
+</ol>
+</span>
       
     </div>
 
@@ -278,16 +286,12 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/26/mlboard/" rel="prev">
-                <i class="fa fa-chevron-left"></i> 机器学习-白板系列
-              </a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/13/linearmodel/" rel="next">
-                Linear Model <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/26/algorithm/" rel="next">
+                AcWing打卡活动 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -415,7 +419,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Set-1-监督学习-Supervised-Learning"><span class="nav-number">1.</span> <span class="nav-text">Problem Set #1 监督学习(Supervised Learning)</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
