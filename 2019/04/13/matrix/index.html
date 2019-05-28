@@ -298,13 +298,14 @@
         [0.6323, 0.3489, 0.4017]])
 </code></pre><h3 id="2-Numpy-and-PyTorch-Convert"><a href="#2-Numpy-and-PyTorch-Convert" class="headerlink" title="2 Numpy and PyTorch Convert"></a>2 Numpy and PyTorch Convert</h3><h4 id="2-1-Numpy-to-Torch"><a href="#2-1-Numpy-to-Torch" class="headerlink" title="2.1 Numpy to Torch"></a>2.1 Numpy to Torch</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create a numpy array of 1</span></span><br><span class="line">numpy_arr = np.ones((<span class="number">2</span>, <span class="number">3</span>))</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tpye of class of numpy array</span></span><br><span class="line">print(type(numpy_arr))</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;class &apos;numpy.ndarray&apos;&gt;
+<pre><code>&lt;class &#39;numpy.ndarray&#39;&gt;
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Convert to Torch Tensor</span></span><br><span class="line">torch_tensor = torch.from_numpy(numpy_arr)</span><br><span class="line">print(torch_tensor)</span><br></pre></td></tr></table></figure>
 <pre><code>tensor([[1., 1., 1.],
         [1., 1., 1.]], dtype=torch.float64)
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># type of class for PyTorch tensor</span></span><br><span class="line">print(type(torch_tensor))</span><br></pre></td></tr></table></figure>
-<pre><code>&lt;class &apos;torch.Tensor&apos;&gt;
-</code></pre><h4 id="2-2-Numpy-to-PyTorch-Support-datatype"><a href="#2-2-Numpy-to-PyTorch-Support-datatype" class="headerlink" title="2.2 Numpy to PyTorch : Support datatype"></a>2.2 Numpy to PyTorch : Support datatype</h4><table>
+<pre><code>&lt;class &#39;torch.Tensor&#39;&gt;
+</code></pre><h4 id="2-2-Numpy-to-PyTorch-Support-datatype"><a href="#2-2-Numpy-to-PyTorch-Support-datatype" class="headerlink" title="2.2 Numpy to PyTorch : Support datatype"></a>2.2 Numpy to PyTorch : Support datatype</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>Numpy Type</th>
@@ -338,6 +339,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># int64 numpy array to PyTorch long tensor</span></span><br><span class="line">numpy_arr = np.ones((<span class="number">2</span>, <span class="number">3</span>), dtype=np.int64)</span><br><span class="line">torch.from_numpy(numpy_arr)</span><br></pre></td></tr></table></figure>
 <pre><code>tensor([[1, 1, 1],
         [1, 1, 1]])
@@ -424,25 +426,46 @@ b / a tensor([[0., 0.],
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.requires_grad</span><br></pre></td></tr></table></figure>
 <pre><code>True
 </code></pre><h4 id="5-2-Manually-and-Automatically-Calculation-Gradients"><a href="#5-2-Manually-and-Automatically-Calculation-Gradients" class="headerlink" title="5.2 Manually and Automatically Calculation Gradients"></a>5.2 Manually and Automatically Calculation Gradients</h4><blockquote>
-<p>$$<br> define: \\<br> y_i = 5(x_i + 1)^2<br>$$</p>
-</blockquote>
+<script type="math/tex; mode=display">
+ define: \\\\
+ y_i = 5(x_i + 1)^2</script></blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">x = torch.ones(<span class="number">2</span>, requires_grad=<span class="literal">True</span>)</span><br><span class="line">print(x)</span><br><span class="line"><span class="comment"># define y</span></span><br><span class="line">y = <span class="number">5</span> * (x  + <span class="number">1</span>) ** <span class="number">2</span></span><br><span class="line">print(y)</span><br></pre></td></tr></table></figure>
 <pre><code>tensor([1., 1.], requires_grad=True)
 tensor([20., 20.], grad_fn=&lt;MulBackward0&gt;)
 </code></pre><blockquote>
-<p>$$<br> define \\<br> o = \frac{1}{2}\sum_{i}{y_i}<br>$$</p>
-</blockquote>
+<script type="math/tex; mode=display">
+ define \\\\
+ o = \frac{1}{2}\sum_{i}{y_i}</script></blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">o = (<span class="number">1</span>/<span class="number">2</span>) * torch.sum(y)</span><br><span class="line">o</span><br></pre></td></tr></table></figure>
 <pre><code>tensor(20., grad_fn=&lt;MulBackward0&gt;)
-</code></pre><p>$$<br>calculationg derivative \\<br>\frac{\partial o}{\partial x_i} = 5(x_i + 1)<br>$$</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># get first derivative</span></span><br><span class="line">o.backward()</span><br></pre></td></tr></table></figure>
+</code></pre><script type="math/tex; mode=display">
+calculationg derivative \\\\
+\frac{\partial o}{\partial x_i} = 5(x_i + 1)</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># get first derivative</span></span><br><span class="line">o.backward()</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.grad</span><br></pre></td></tr></table></figure>
 <pre><code>tensor([10., 10.])
 </code></pre><blockquote>
-<p>逃课之人终将逃不过需要补课的命运.<br>                              —鲁迅</p>
+<p>逃课之人终将逃不过需要补课的命运.<br>                              —-鲁迅</p>
 </blockquote>
 <h3 id="6-Basic-Concepts"><a href="#6-Basic-Concepts" class="headerlink" title="6. Basic Concepts"></a>6. Basic Concepts</h3><blockquote>
-<p>线性代数提供一种表达以及运算线性方程组的完备方法，例如下列方程组<br>$$<br>4x_1 - 5x_2 = -13 \\<br>-2x_1 + 3x_2 = 9<br>$$<br>上式子中有两个方程以及两个变量，这个是高中的代数知识啦，可以求的$x_1$ 和$x_2$唯一解，如果用矩阵的表达方法，可以写成这样<br>$$<br>Ax = b \\<br>with, \\<br>A = \left[<br> \begin{matrix}<br>   4 &amp; -5 \\<br>   -2 &amp; 3<br>  \end{matrix}<br>  \right] ,<br>  b =  \left[<br> \begin{matrix}<br>   -13 \\<br>   9<br>  \end{matrix}<br>  \right]<br>$$<br>可以看到这样的表达方式不为别的，就是帅(手动狗头)。。</p>
+<p>线性代数提供一种表达以及运算线性方程组的完备方法，例如下列方程组</p>
+<script type="math/tex; mode=display">
+4x_1 - 5x_2 = -13 \\\\
+-2x_1 + 3x_2 = 9</script><p>上式子中有两个方程以及两个变量，这个是高中的代数知识啦，可以求的$x_1$ 和$x_2$唯一解，如果用矩阵的表达方法，可以写成这样</p>
+<script type="math/tex; mode=display">
+Ax = b \\\\
+with, \\\\
+A = \left[
+ \begin{matrix}
+   4 & -5 \\\\
+   -2 & 3 
+  \end{matrix}
+  \right] , 
+  b =  \left[
+ \begin{matrix}
+   -13 \\\\
+   9 
+  \end{matrix}
+  \right]</script><p>可以看到这样的表达方式不为别的，就是帅(手动狗头)。。</p>
 </blockquote>
 <h4 id="6-1-Basic-Notation"><a href="#6-1-Basic-Notation" class="headerlink" title="6.1 Basic Notation"></a>6.1 Basic Notation</h4><h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
 <li><a href="https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_matrices/" target="_blank" rel="noopener">https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_matrices/</a></li>
