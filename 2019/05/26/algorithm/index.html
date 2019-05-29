@@ -47,18 +47,18 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2">
 
 
-<meta name="description" content="《算法竞赛进阶指南》打卡活动图书目录 基本算法 基本数据结构 搜索 数学知识 数据结构进阶 动态规划 图论 综合技巧与实践">
+<meta name="description" content="$a^b\%p$ (快速幂) O(logb) 时间复杂度分析：每次对b进行右移操作(a  b ) % p = ((a % p )  (b % p) ) % p ; (a + b ) % p = ((a % p ) + (b % p) ) % p ;证明仅以a  b % p；a = c1  p + d1 ;  b = c2  p + d2;(a  b) % p = (c1  p + d1 )  (">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AcWing打卡活动">
 <meta property="og:url" content="http://qwertymjs.github.io/2019/05/26/algorithm/index.html">
 <meta property="og:site_name" content="Qwertymjs&#39;s Blog">
-<meta property="og:description" content="《算法竞赛进阶指南》打卡活动图书目录 基本算法 基本数据结构 搜索 数学知识 数据结构进阶 动态规划 图论 综合技巧与实践">
+<meta property="og:description" content="$a^b\%p$ (快速幂) O(logb) 时间复杂度分析：每次对b进行右移操作(a  b ) % p = ((a % p )  (b % p) ) % p ; (a + b ) % p = ((a % p ) + (b % p) ) % p ;证明仅以a  b % p；a = c1  p + d1 ;  b = c2  p + d2;(a  b) % p = (c1  p + d1 )  (">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-26T14:57:22.697Z">
+<meta property="og:updated_time" content="2019-05-29T03:38:29.702Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AcWing打卡活动">
-<meta name="twitter:description" content="《算法竞赛进阶指南》打卡活动图书目录 基本算法 基本数据结构 搜索 数学知识 数据结构进阶 动态规划 图论 综合技巧与实践">
+<meta name="twitter:description" content="$a^b\%p$ (快速幂) O(logb) 时间复杂度分析：每次对b进行右移操作(a  b ) % p = ((a % p )  (b % p) ) % p ; (a + b ) % p = ((a % p ) + (b % p) ) % p ;证明仅以a  b % p；a = c1  p + d1 ;  b = c2  p + d2;(a  b) % p = (c1  p + d1 )  (">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -261,15 +261,24 @@
       
 
       
-        <span itemprop="articleBody"><h3 id="《算法竞赛进阶指南》打卡活动"><a href="#《算法竞赛进阶指南》打卡活动" class="headerlink" title="《算法竞赛进阶指南》打卡活动"></a>《算法竞赛进阶指南》打卡活动</h3><h4 id="图书目录"><a href="#图书目录" class="headerlink" title="图书目录"></a>图书目录</h4><ul>
-<li>基本算法</li>
-<li>基本数据结构</li>
-<li>搜索</li>
-<li>数学知识</li>
-<li>数据结构进阶</li>
-<li>动态规划</li>
-<li>图论</li>
-<li>综合技巧与实践</li>
+        <span itemprop="articleBody"><ul>
+<li><p><a href="https://www.acwing.com/problem/content/91/" target="_blank" rel="noopener">$a^b\%p$</a></p>
+<p>(快速幂) O(logb)</p>
+<p>时间复杂度分析：每次对b进行右移操作<br>(a <em> b ) % p = ((a % p ) </em> (b % p) ) % p ; (a + b ) % p = ((a % p ) + (b % p) ) % p ;<br>证明仅以a <em> b % p；<br>a = c1 </em> p + d1 ;  b = c2 <em> p + d2;<br>(a </em> b) % p = (c1 <em> p + d1 ) </em> (c2 <em> p+ d2 ) % p = (d1</em>d2)%p;</p>
+<p>本题逻辑核心！！</p>
+<p>b可以拆成2的幂次方</p>
+<p>$b = C_{k}2^{k}<em>C_{k-1}2^{k-1}</em>….C_{1}2^{1}*C_{0}2^{0}$<br>所以对于(a^b)%p式子的展开</p>
+<p>$a^{b} = a^{C_{k}2^{k}}*a^{C_{k-1}2^{k-1}}…a^{C_{0}2^{0}}$</p>
+<p>$1<em>a^{C_{0}2^{0}}\%p = ((1\%p) </em> (a^{C_{1}2^{1}}\%p) \% p)$</p>
+<p>$a^{b}\%p = ((1<em>a^{C_{0}2^{0}})\%p </em> (a^{C_{1}2^{1}}\%p)\%p……$ </p>
+<p>a(x1)<em>a(x2)%p) </em> (a(x3)%p) ) %p</p>
+<pre><code>    1*a(x1)*a(x2)%p = ( (1*a(x1)%p) * (a(x2)%p) )%p
+    1*a(x1)%p = ( (1%p) * (a(x1)%p) )%p
+    所以res初始化值为1%p
+    算法即是从下向上实现 
+2.理解a = a *a % p
+    迭代a： ( res * (a(xn)%p) )%p 其中的a(xn)%p = a(xn-1)*a(xn-1)%p
+</code></pre></li>
 </ul>
 </span>
       
@@ -425,7 +434,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#《算法竞赛进阶指南》打卡活动"><span class="nav-number">1.</span> <span class="nav-text">《算法竞赛进阶指南》打卡活动</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#图书目录"><span class="nav-number">1.1.</span> <span class="nav-text">图书目录</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
