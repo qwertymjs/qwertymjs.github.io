@@ -57,7 +57,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://qwertymjs.github.io/images/output_2_1.png">
 <meta property="og:image" content="http://qwertymjs.github.io/images/output_5_1.png">
-<meta property="og:updated_time" content="2019-06-01T03:01:26.377Z">
+<meta property="og:updated_time" content="2019-06-03T04:11:05.675Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吴恩达-机器学习-学习笔记">
 <meta name="twitter:description" content="Problem Set #1 监督学习(Supervised Learning)1. Logistic regression(a) 已知逻辑回归的cost function如下： J(\theta) = \frac{1}{m}\sum^{m}_{i=1}\log(1+e^{-y^{(i)}\theta^{T}x^{(i)}}) = -\frac{1}{m}\sum^{m}_{i=1}\log(h_">
@@ -294,6 +294,43 @@ df_y: ---&gt;           0         1
 [-2.29735375  0.64859051  0.83499719]
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ax = plt.axes()</span><br><span class="line">df_x.query(<span class="string">'label == -1'</span>).plot.scatter(x=<span class="number">0</span>, y=<span class="number">1</span>, ax=ax, color=<span class="string">'blue'</span>)</span><br><span class="line">df_x.query(<span class="string">'label == 1'</span>).plot.scatter(x=<span class="number">0</span>, y=<span class="number">1</span>, ax=ax, color=<span class="string">'red'</span>)</span><br><span class="line">_xs = np.array([np.min(x_train[:,<span class="number">1</span>]), np.max(x_train[:,<span class="number">1</span>])])</span><br><span class="line"><span class="keyword">for</span> k, theta <span class="keyword">in</span> enumerate(all_thetas):</span><br><span class="line">    _ys = (theta[<span class="number">0</span>] + theta[<span class="number">1</span>] * _xs) / (- theta[<span class="number">2</span>])</span><br><span class="line">    plt.plot(_xs, _ys, label=<span class="string">'iter &#123;0&#125;'</span>.format(k + <span class="number">1</span>), lw=<span class="number">0.5</span>)</span><br><span class="line">plt.legend(bbox_to_anchor=(<span class="number">1.04</span>,<span class="number">1</span>), loc=<span class="string">"upper left"</span>)</span><br></pre></td></tr></table></figure>
 <p><img src="/images/output_5_1.png" alt="png"></p>
+<h3 id="GLM广义线性模型"><a href="#GLM广义线性模型" class="headerlink" title="GLM广义线性模型"></a>GLM广义线性模型</h3><blockquote>
+<p>到目前为止，介绍了一个线性回归以及逻辑回归的例子，在线性回归例子中，$y|x;\theta $服从高斯分布；逻辑回归中,$y|x; \theta$服从伯努利分布。这些模型都可以归类到广义线性模型的特殊例子。</p>
+</blockquote>
+<h4 id="exponentail-family-distribution-指数族分布"><a href="#exponentail-family-distribution-指数族分布" class="headerlink" title="exponentail family distribution(指数族分布)"></a>exponentail family distribution(指数族分布)</h4><blockquote>
+<p>分布定义为：$p(y;\eta) = b(y)exp(\eta^TT(y) - a(\eta))$</p>
+<p>其中：$\eta$叫<strong>Natural parameter</strong>， $T(y)$为<strong>sufficient statistic(充分统计量)</strong>(通常$T(y) = y$), $a(\eta)$为<strong>$\log partition function$</strong>,使得整个分布$p(y;\eta)$和或者积分为1.</p>
+<p>伯努利分布(Bernoulli distribution)可以写成：</p>
+<script type="math/tex; mode=display">p(y;\phi) = \phi^y(1 - \phi)^{1 - y}</script><script type="math/tex; mode=display">= \exp(y\log\phi + (1 - y)\log(1 - \phi))</script><script type="math/tex; mode=display">= \exp(y\log(\frac{\phi}{1 - \phi}) + \log(1 - \phi))</script><p>等同于指数族分布，可以得到：</p>
+<script type="math/tex; mode=display">\eta = \log(\phi/(1 - \phi)), \phi = e^\eta / (1 + e^\eta)</script><script type="math/tex; mode=display">T(y) = y</script><script type="math/tex; mode=display">a(\eta) = -\log(1 - \phi) = - \log(1 / (1 + e^\eta)) = log(1 + e^ \eta)</script><script type="math/tex; mode=display">b(y) = 1</script></blockquote>
+<h4 id="构造广义线性模型"><a href="#构造广义线性模型" class="headerlink" title="构造广义线性模型"></a>构造广义线性模型</h4><blockquote>
+<p>为了导出广义线性模型，定义三个假设条件：</p>
+<ol>
+<li>$y|x;  \theta \sim ExponentialFamily(\eta)$</li>
+<li>给定$x$, 目标是预测$T(y)$的期望值，通常设定$T(y) = y$, 所以一般我们的假设hypothesis $h$满足$h(x) = E[y|x]$</li>
+<li>自然参数$natural parameter$和输入$x$之间是线性关系：$\eta = \theta^Tx$, (如果$ \eta$是向量的话，则有$ \eta_i = \theta_i^Tx$)</li>
+</ol>
+</blockquote>
+<h4 id="Logistic-regression推导"><a href="#Logistic-regression推导" class="headerlink" title="Logistic regression推导"></a>Logistic regression推导</h4><blockquote>
+<p>这是一个二元分类问题，定义$y \in \{0,1\}$, 对于$y$属于0或者1，自然选择伯努利分布去定义给定x的情况下， y条件分布。</p>
+<script type="math/tex; mode=display">h_\theta(x) = E(y|x;\theta)</script><script type="math/tex; mode=display">= \phi</script><script type="math/tex; mode=display">1 / (1 + e^{-\eta}) = 1/(1 + e^{-\theta^Tx})</script></blockquote>
+<h4 id="Softmax-Regression推导"><a href="#Softmax-Regression推导" class="headerlink" title="Softmax Regression推导"></a>Softmax Regression推导</h4><blockquote>
+<p>现在考虑多分类问题，定义$y \in \{1,2,…,k \}$, 因此选择多项式分布去定义y的条件分布。</p>
+<p>为了定义一个k个输出的多项式，我们用k个参数$\phi_1,\phi_2,…,\phi_k$来定义每一个输出的概率，并且$\sum_{i=1}^k \phi_i = 1$,所以我们只需要定义$k - 1$个参数，$\phi_i = p(y=i;\phi)$,以及$p(y=k;\phi) = 1 - \sum^{k-1}_{i=1}\phi_i$, 定义$T(y) \in \\R^{k-1}$,</p>
+<p>$T(1) = \begin{bmatrix}1\\ 0 \\ 0 \\ \vdots \\ 0 \end{bmatrix}, T(2) = \begin{bmatrix}0\\ 1 \\ 0 \\ \vdots \\ 0 \end{bmatrix}, T(k-1) = \begin{bmatrix}0\\ 0 \\ 0 \\ \vdots \\ 1 \end{bmatrix}, T(k) = \begin{bmatrix}0\\ 0 \\ 0 \\ \vdots \\ 0 \end{bmatrix}$</p>
+<p>用$(T(y))_i$表示$T(y)$的第$i$个元素，所以整个分布可以写成：</p>
+<p>$p(y; \phi) = \phi_1^{1\{ y = 1\}}\phi_2^{1\{ y = 2\}}\dots \phi_k^{1\{ y = k\}} =  \phi_1^{1\{ y = 1\}}\phi_2^{1\{ y = 2\}}\dots \phi_k^{1 - \sum_{i=1}^{k-1}(T(y))_i}$</p>
+<p>$ = \exp((T(y))_1 \log (\phi_1) + (T(y))_2 \log (\phi_2)) + \dots + (1 - \sum_{i=1}^{k-1}(T(y))_i)\log(\phi_k)$</p>
+<script type="math/tex; mode=display">= \exp((T(y))_1 \log (\phi_1 / \phi_k) + (T(y))_2 \log (\phi_2 / \phi_k)) + \dots + (T(y))_{k-1}\log(\phi_{k-1}/\phi_k) + \log(\phi_k))</script><script type="math/tex; mode=display">= b(y)\exp(\eta^TT(y) - a(\eta))</script><p>所以有：</p>
+<script type="math/tex; mode=display">\eta = \begin{bmatrix} \log(\phi_1/\phi_k) \\ \log(\phi_2/\phi_k) \\  \vdots \\ \log(\phi_{k-1}/\phi_k) \end{bmatrix}, a(\eta) = -\log(\phi_k), b(y) = 1</script><p>然后：$\eta_i = log(\phi_i/\phi_k),  e^{\eta_i} = \frac{\phi_i}{\phi_k},$另外$\eta_k = \log(\frac{\phi_k}{\phi_k}) = 0$</p>
+<p>$\phi_ke^{\eta_i} = \phi_i$,求和得：$\phi_k \sum_{i=1}^{k}e^{\eta_i} = \sum_{i=1}^{k}\phi_i = 1$ </p>
+<p>所以$ \phi_k = 1/ \sum_{i=1}^{k}e^{\eta_i}$,在代入$e^{\eta_i} = \frac{\phi_i}{\phi_k}$,得到：</p>
+<p>$\phi_i = \frac{e^{\eta_i}}{\sum_{i=1}^{k}e^{\eta_i}}, p(y=i|x,\theta) = \phi_i = \frac{e^{\eta_i}}{\sum_{j=1}^{k}e^{\eta_j}} = {e^{\theta_i^Tx}}/{\sum_{j=1}^{k}e^{\theta_j^Tx}}$</p>
+<p>定义hypothesis $ h_\theta(x)$:</p>
+<p>$ h_\theta(x) = E(T(y)|x;\theta) = E\begin{bmatrix} 1\{y=1\} \\ 1\{y=2\} \\ \vdots \\1\{y=k-1\} \end{bmatrix} = \begin{bmatrix} \phi_1 \\ \phi_2 \\ \vdots \\ \phi_{k-1} \end{bmatrix}= \begin{bmatrix} \frac{\exp(\theta^T_1x)}{\sum_{j=1}^k \exp(\theta^T_jx)} \\ \frac{\exp(\theta^T_2x)}{\sum_{j=1}^k \exp(\theta^T_jx)} \\ \vdots \\ \frac{\exp(\theta^T_{k-1}x)}{\sum_{j=1}^k \exp(\theta^T_jx)}\end{bmatrix}$</p>
+</blockquote>
+<h5 id="softmax-regression-function"><a href="#softmax-regression-function" class="headerlink" title="softmax regression function"></a>softmax regression function</h5><p>$l(\theta) = \sum_{i=1}^m \log p(y^{(i)}|x^{(i)};\theta) = \sum_{i=1}^m \log \prod_{l=1}^k ( \frac{\exp(\theta^T_{l}x^{(i)})}{\sum_{j=1}^k \exp(\theta^T_jx^{(i)})})^{1{\{y^{(i)} = l\}}}$</p>
+<p>然后通过梯度下降或者牛顿法去优化损失函数。 </p>
 </span>
       
     </div>
@@ -444,7 +481,7 @@ df_y: ---&gt;           0         1
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Set-1-监督学习-Supervised-Learning"><span class="nav-number">1.</span> <span class="nav-text">Problem Set #1 监督学习(Supervised Learning)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Logistic-regression"><span class="nav-number">1.1.</span> <span class="nav-text">1. Logistic regression</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Set-1-监督学习-Supervised-Learning"><span class="nav-number">1.</span> <span class="nav-text">Problem Set #1 监督学习(Supervised Learning)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Logistic-regression"><span class="nav-number">1.1.</span> <span class="nav-text">1. Logistic regression</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GLM广义线性模型"><span class="nav-number">2.</span> <span class="nav-text">GLM广义线性模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#exponentail-family-distribution-指数族分布"><span class="nav-number">2.1.</span> <span class="nav-text">exponentail family distribution(指数族分布)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造广义线性模型"><span class="nav-number">2.2.</span> <span class="nav-text">构造广义线性模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Logistic-regression推导"><span class="nav-number">2.3.</span> <span class="nav-text">Logistic regression推导</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Softmax-Regression推导"><span class="nav-number">2.4.</span> <span class="nav-text">Softmax Regression推导</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#softmax-regression-function"><span class="nav-number">2.4.1.</span> <span class="nav-text">softmax regression function</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
