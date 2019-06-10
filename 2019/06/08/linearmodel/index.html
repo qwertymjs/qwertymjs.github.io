@@ -1,0 +1,885 @@
+<!doctype html>
+<html class="theme-next use-motion ">
+<head><meta name="generator" content="Hexo 3.8.0">
+  
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/others/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
+
+
+  
+    <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+<link rel="stylesheet" type="text/css" href="/others/font-awesome/css/font-awesome.min.css?v=4.4.0">
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.2">
+
+
+    <meta name="description" content="悄悄是别离的笙箫，沉默是今晚的康桥。">
+
+
+
+  <meta name="keywords" content="PyTorch,">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Qwertymjs's Blog" type="application/atom+xml">
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.4.5.2">
+
+
+<meta name="description" content="0. 线性模型 linear model 机器学习模型应用五花八门，有复杂有简单，但线性模型是其中最最简单的，基础的模型，也是最典型的模型之一了，有助于我们了解整个机器学习的运作方式。所以能对线性模型知其然，知其所以然，才能真正做到从入门到放弃机器学习。">
+<meta name="keywords" content="PyTorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Introduction To Linear Model">
+<meta property="og:url" content="http://qwertymjs.github.io/2019/06/08/linearmodel/index.html">
+<meta property="og:site_name" content="Qwertymjs&#39;s Blog">
+<meta property="og:description" content="0. 线性模型 linear model 机器学习模型应用五花八门，有复杂有简单，但线性模型是其中最最简单的，基础的模型，也是最典型的模型之一了，有助于我们了解整个机器学习的运作方式。所以能对线性模型知其然，知其所以然，才能真正做到从入门到放弃机器学习。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-06-10T09:28:54.573Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Introduction To Linear Model">
+<meta name="twitter:description" content="0. 线性模型 linear model 机器学习模型应用五花八门，有复杂有简单，但线性模型是其中最最简单的，基础的模型，也是最典型的模型之一了，有助于我们了解整个机器学习的运作方式。所以能对线性模型知其然，知其所以然，才能真正做到从入门到放弃机器学习。">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post'
+  };
+</script>
+
+
+
+  <title> Introduction To Linear Model | Qwertymjs's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div id="container" class="container one-column page-post-detail">
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-work-page">
+          <a href="/work-page" rel="section">
+            
+              <i class="menu-item-icon fa fa-gear"></i> <br>
+            
+            通天塔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-study-page">
+          <a href="/study-page" rel="section">
+            
+              <i class="menu-item-icon fa fa-compass"></i> <br>
+            
+            奇衡三
+          </a>
+        </li>
+      
+
+      
+      
+	  	<span style="font-size:14px;float:right;padding:39px 40px 0 0;">——悄悄是别离的笙箫，沉默是今晚的康桥。</span>
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+
+        	<div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Introduction To Linear Model
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          <span class="post-time">
+            Posted on
+            <time itemprop="dateCreated" datetime="2019-06-08T00:34:44+08:00" content="2019-06-08">
+              2019-06-08 00:34
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp; In
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Deep Learning</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+            <span id="/2019/06/08/linearmodel/" class="leancloud_visitors" data-flag-title="Introduction To Linear Model">
+            &nbsp; | &nbsp;   
+            views
+            </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="0-线性模型-linear-model"><a href="#0-线性模型-linear-model" class="headerlink" title="0. 线性模型 linear model"></a>0. 线性模型 linear model</h3><blockquote>
+<p>机器学习模型应用五花八门，有复杂有简单，但线性模型是其中最最简单的，基础的模型，也是最典型的模型之一了，有助于我们了解整个机器学习的运作方式。所以能对线性模型知其然，知其所以然，才能真正做到从入门到放弃机器学习。</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="1-线性回归-linear-regression"><a href="#1-线性回归-linear-regression" class="headerlink" title="1. 线性回归 linear regression"></a>1. 线性回归 linear regression</h3><blockquote>
+<p>回归问题是在给定D纬输入$x$的情况下，预测一个或者多个连续目标变量$y$的值。</p>
+</blockquote>
+<h4 id="1-1-线性回归定义"><a href="#1-1-线性回归定义" class="headerlink" title="1.1 线性回归定义"></a>1.1 线性回归定义</h4><h4 id="1-2-线性回归几何解析"><a href="#1-2-线性回归几何解析" class="headerlink" title="1.2 线性回归几何解析"></a>1.2 线性回归几何解析</h4><h4 id="1-3-贝叶斯线性回归"><a href="#1-3-贝叶斯线性回归" class="headerlink" title="1.3 贝叶斯线性回归"></a>1.3 贝叶斯线性回归</h4><h3 id="2-逻辑回归-logistic-regression"><a href="#2-逻辑回归-logistic-regression" class="headerlink" title="2. 逻辑回归 logistic regression"></a>2. 逻辑回归 logistic regression</h3><p>分类问题，而且是二分类，是机器学习中一个基本的学习场景。例如判断邮件是不是垃圾邮件，用户对商品是不是该买等等。数学定义上就是：给定$m$个数据样本$(x^{(1)}, y^{(1)}),(x^{(2)}, y^{(2)}),\dots,(x^{(m)}, y^{(m)})$,其中$x^{(i)}  \in  R^{n}$, 表示第$i$个样本的n维特征向量，$y^{(i)} \in \{0, 1\}$表示样本的目标值是正样本(1)还是负样本(0)。自然而然假设目标值是服从伯努利分布，有$y|x;\theta \sim Bernoulli(\phi)$。逻辑回归模型通过一个sigmoid函数$\sigma(x) = 1/ (1 + e^{-x})$表示输入$x^{(i)}$与目标值为正样本的概率。</p>
+<script type="math/tex; mode=display">\phi = P(y^{(i)} = 1|x^{(i)};\theta) = \frac{1}{1 + e^{-\theta^Tx^{(i)}}} = \sigma(\theta^Tx^{(i)})</script><p>同时，由于</p>
+<script type="math/tex; mode=display">P(y^{(i)} = 0|x^{(i)};\theta) = 1 - \phi = 1 - P(y^{(i)} = 1|x^{(i)};\theta)</script><p>为了方便我们写成一个式子</p>
+<script type="math/tex; mode=display">P(y^{(i)}|x^{(i)};\theta) = \sigma(\theta^Tx^{(i)})^{y^{(i)}}*(1 - \sigma(\theta^Tx^{(i)}))^{1 - y^{(i)}}</script><p><strong><em>PS</em></strong>: 有时候会假设$y^{(i)}$取值是$\{-1,+1\}$, 相对的公式推导略有不同，</p>
+<script type="math/tex; mode=display">P(y^{(i)} = +1|x^{(i)};\theta) = \sigma(y^{(i)}\theta^Tx^{(i)}) = {1}/(1 + e^{-\theta^Tx^{(i)}})</script><p>同时有：</p>
+<script type="math/tex; mode=display">P(y^{(i)} = -1|x^{(i)};\theta) = 1- P(y^{(i)} = +1|x^{(i)};\theta)  =\sigma(y^{(i)}\theta^Tx^{(i)})</script><p>所以，综合写成一个式子：</p>
+<script type="math/tex; mode=display">P(y^{(i)} = \pm1|x^{(i)};\theta) =\sigma(y^{(i)}\theta^Tx^{(i)})  = 1 / (1 + e^{y^{(i)}\theta^Tx^{(i)}})</script><p>直观上来看，参数$\theta$对$x^{(i)} $的$n$个维度做不同的加权，从而算出值$\theta^Tx^{(i)}$,这个值通过sigmoid函数压缩到$\{0,1\}$之间，作为$x^{(i)}$对应的目标值为正样本的概率。参数$\theta$是通过极大似然估计(Maximum Likelihood Estimation,简称MLE)来找到最佳的值。</p>
+<p>多说两句，MLE是属于频率派的做法。在频率派中，认为求解的参数$\theta$是<strong>未知的常量</strong>，样本数据$x$是<strong>随机变量</strong>，并且是服从概率$p(x|\theta)$<strong>独立同分布</strong>(iid), $\theta$的值是使似然函数$p(X|\theta)$达到最大的$\theta$值，也就是选择使观察数据集出现概率最大的$\theta$的值。另外似然函数的负对数也叫损失函数。由于负对数是单调递减的函数，所以最大化似然函数等价于最小化损失函数，所以频率派最后都转化成一个优化问题。</p>
+<p>最大化似然函数：$\max_{\theta}\sum_{i=1}^m \log p(y^{(i)}|x^{(i)},\theta)$:</p>
+<p>当$y \in \{0, 1\}$时：$\max_{\theta}\sum_{i=1}^m \log p(y^{(i)}|x^{(i)},\theta)  = \sum_{i=1}^m (y^{(i)}\log (\sigma(\theta^Tx^{(i)})) + (1 - y^{(i)}) \log (1 - \sigma(\theta^Tx^{(i)}))) $</p>
+<p>所以极大化转化成极小化损失函数：$J(\theta) = -\sum_{i=1}^m (y^{(i)}\log (\sigma(\theta^Tx^{(i)})) + (1 - y^{(i)}) \log (1 - \sigma(\theta^Tx^{(i)}))) $</p>
+<p><strong>PS:</strong>当$y \in \{-1, +1\}$时：$\max_{\theta}\sum_{i=1}^m \log p(y^{(i)}|x^{(i)},\theta) = -\sum_{i=1}^m \log (1 + e^{y^{(i)}\theta^Tx^{(i)}})$</p>
+<p>相对的：$J(\theta) = \sum_{i=1}^m \log (1 + e^{y^{(i)}\theta^Tx^{(i)}})$</p>
+<h4 id="2-1-逻辑回归定义"><a href="#2-1-逻辑回归定义" class="headerlink" title="2.1 逻辑回归定义"></a>2.1 逻辑回归定义</h4><h4 id="2-2-L1-vs-L2-正则化"><a href="#2-2-L1-vs-L2-正则化" class="headerlink" title="2.2 $L1 vs L2$正则化"></a>2.2 $L1 vs L2$正则化</h4><h4 id="2-3-贝叶斯逻辑回归"><a href="#2-3-贝叶斯逻辑回归" class="headerlink" title="2.3 贝叶斯逻辑回归"></a>2.3 贝叶斯逻辑回归</h4><h3 id="3-广义线性模型-GLM"><a href="#3-广义线性模型-GLM" class="headerlink" title="3. 广义线性模型 GLM"></a>3. 广义线性模型 GLM</h3><blockquote>
+<p>GLM introduction</p>
+</blockquote>
+<h4 id="3-1-指数族分布"><a href="#3-1-指数族分布" class="headerlink" title="3.1 指数族分布"></a>3.1 指数族分布</h4><h4 id="3-2-线性回归"><a href="#3-2-线性回归" class="headerlink" title="3.2 线性回归"></a>3.2 线性回归</h4><h4 id="3-3-逻辑回归"><a href="#3-3-逻辑回归" class="headerlink" title="3.3 逻辑回归"></a>3.3 逻辑回归</h4><h4 id="3-4-Softmax-Regression"><a href="#3-4-Softmax-Regression" class="headerlink" title="3.4 Softmax Regression"></a>3.4 Softmax Regression</h4><h4 id="3-5-GLM延伸-阿里分层GML"><a href="#3-5-GLM延伸-阿里分层GML" class="headerlink" title="3.5 GLM延伸(阿里分层GML)"></a>3.5 GLM延伸(阿里分层GML)</h4><h3 id="4-优化问题"><a href="#4-优化问题" class="headerlink" title="4. 优化问题"></a>4. 优化问题</h3><h4 id="4-1-梯度下降法"><a href="#4-1-梯度下降法" class="headerlink" title="4.1 梯度下降法"></a>4.1 梯度下降法</h4><h4 id="4-2-牛顿法"><a href="#4-2-牛顿法" class="headerlink" title="4.2 牛顿法"></a>4.2 牛顿法</h4><h4 id="4-3-拟牛顿法"><a href="#4-3-拟牛顿法" class="headerlink" title="4.3 拟牛顿法"></a>4.3 拟牛顿法</h4><h4 id="4-4-在线学习"><a href="#4-4-在线学习" class="headerlink" title="4.4 在线学习"></a>4.4 在线学习</h4><h3 id="5-代码实现"><a href="#5-代码实现" class="headerlink" title="5. 代码实现"></a>5. 代码实现</h3><h3 id="6-频率派VS贝叶斯"><a href="#6-频率派VS贝叶斯" class="headerlink" title="6. 频率派VS贝叶斯"></a>6. 频率派VS贝叶斯</h3><h2 id="1-Linear-Regression"><a href="#1-Linear-Regression" class="headerlink" title="1. Linear Regression"></a>1. Linear Regression</h2><h3 id="1-1-Simple-Linear-Regression-Basics"><a href="#1-1-Simple-Linear-Regression-Basics" class="headerlink" title="1.1 Simple Linear Regression Basics"></a>1.1 Simple Linear Regression Basics</h3><script type="math/tex; mode=display">
+y = \alpha x + \beta</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create plot</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line">n = <span class="number">50</span></span><br><span class="line">x = np.random.randn(n)</span><br><span class="line">y = x * np.random.randn(n)</span><br><span class="line"></span><br><span class="line">colors = np.random.rand(n)</span><br><span class="line">plt.plot(np.unique(x), np.poly1d(np.polyfit(x, y, <span class="number">1</span>))(np.unique(x)))</span><br><span class="line">plt.scatter(x, y, c=colors, alpha=<span class="number">0.5</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-Aim-of-Linear-Regression"><a href="#1-2-Aim-of-Linear-Regression" class="headerlink" title="1.2 Aim of Linear Regression"></a>1.2 Aim of Linear Regression</h3><ul>
+<li>Minimize the distance between the points and the line($y = \alpha x + \beta$)</li>
+</ul>
+<h3 id="1-3-Build-Regression-Model"><a href="#1-3-Build-Regression-Model" class="headerlink" title="1.3 Build Regression Model"></a>1.3 Build Regression Model</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Building dataset</span></span><br><span class="line">x_values = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">11</span>)]</span><br><span class="line"><span class="comment"># Convert to numpy array</span></span><br><span class="line">x_train = np.array(x_values, dtype=np.float32)</span><br><span class="line">x_train.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(11,)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Convert to 2-dimensional array</span></span><br><span class="line">x_train = x_train.reshape(<span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line">x_train.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(11, 1)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create list of y values</span></span><br><span class="line">y_values = [<span class="number">2</span> * i + <span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> x_values]</span><br><span class="line">y_values</span><br></pre></td></tr></table></figure>
+<pre><code>[1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Convert to numpy array</span></span><br><span class="line">y_train = np.array(y_values, dtype=np.float32)</span><br><span class="line">y_train.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(11,)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Convert to 2-dimensional array</span></span><br><span class="line">y_train = y_train.reshape(<span class="number">-1</span>, <span class="number">1</span>)</span><br><span class="line">y_train.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(11, 1)
+</code></pre><h3 id="1-4-Build-Regression-Model-with-PyTorch"><a href="#1-4-Build-Regression-Model-with-PyTorch" class="headerlink" title="1.4 Build Regression Model with PyTorch"></a>1.4 Build Regression Model with PyTorch</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br></pre></td></tr></table></figure>
+<h3 id="1-5-Create-LinearRegressionModel"><a href="#1-5-Create-LinearRegressionModel" class="headerlink" title="1.5 Create LinearRegressionModel"></a>1.5 Create LinearRegressionModel</h3><blockquote>
+<ol>
+<li>Target equation: $y = 2x + 1$</li>
+<li>Forward: Input x = 1 and Then Output $\hat{y} = ?$</li>
+</ol>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create Class</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinearRegressionModel</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input_dim, output_dim)</span>:</span></span><br><span class="line">        super(LinearRegressionModel, self).__init__()</span><br><span class="line">        self.linear = nn.Linear(input_dim, output_dim)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        out = self.linear(x)</span><br><span class="line">        <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">input_dim = <span class="number">1</span></span><br><span class="line">output_dim = <span class="number">1</span></span><br><span class="line">model = LinearRegressionModel(input_dim, output_dim)</span><br></pre></td></tr></table></figure>
+<h3 id="1-6-Instantiate-Loss-Function"><a href="#1-6-Instantiate-Loss-Function" class="headerlink" title="1.6 Instantiate Loss Function"></a>1.6 Instantiate Loss Function</h3><ul>
+<li>MSELoss: Mean Squared Erros</li>
+<li>$ MSE = \frac{1}{n} \sum_{i=1}^{n}(\hat{y_i} - y_i)^2 $</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Loss</span></span><br><span class="line">criterion = nn.MSELoss()</span><br></pre></td></tr></table></figure>
+<h3 id="1-7-Optimizer-Class"><a href="#1-7-Optimizer-Class" class="headerlink" title="1.7 Optimizer Class"></a>1.7 Optimizer Class</h3><ul>
+<li>$\theta = \theta - \eta \nabla_{\theta}$</li>
+<li>$\theta:$ parameters</li>
+<li>$\eta:$ learning rate</li>
+<li>$\nabla_{\theta}:$ parameters’s gradients</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Optimizer model</span></span><br><span class="line">learning_rate = <span class="number">0.01</span></span><br><span class="line">optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)</span><br></pre></td></tr></table></figure>
+<h3 id="1-8-Train-Model"><a href="#1-8-Train-Model" class="headerlink" title="1.8 Train Model"></a>1.8 Train Model</h3><ul>
+<li><p>1 epoch: going through the whole x_train data once</p>
+</li>
+<li><p>each epoch</p>
+<ul>
+<li><p>Convert inputs/label to tensor with gradients</p>
+</li>
+<li><p>Clear gradient buffers</p>
+</li>
+<li><p>Get output given inputs</p>
+</li>
+<li><p>Get Loss</p>
+</li>
+<li><p>Get gradients</p>
+</li>
+<li><p>Update parameters using gradients</p>
+<ul>
+<li><code>parameters = parameters - learning_rate * parameters_gradients</code></li>
+</ul>
+</li>
+<li><p>REPEAT</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">num_epoch = <span class="number">100</span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(num_epoch):</span><br><span class="line">    <span class="comment"># Convert numpy array to Torch Tensor</span></span><br><span class="line">    inputs = torch.from_numpy(x_train).requires_grad_()</span><br><span class="line">    labels = torch.from_numpy(y_train)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Clear gradients</span></span><br><span class="line">    optimizer.zero_grad()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Forward to get output</span></span><br><span class="line">    outputs = model(inputs)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Calculate Loss</span></span><br><span class="line">    loss = criterion(outputs, labels)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Get Gradients</span></span><br><span class="line">    loss.backward()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># update parameters</span></span><br><span class="line">    optimizer.step()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># print('epoch &#123;&#125;, loss &#123;&#125;'.format(epoch, loss.item()))</span></span><br><span class="line">    epoch += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Plot of pred and actual values</span></span><br><span class="line"><span class="comment"># Clear figure</span></span><br><span class="line">plt.clf()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get predictions</span></span><br><span class="line">predicted = model(torch.from_numpy(x_train).requires_grad_()).data.numpy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot true data</span></span><br><span class="line">plt.plot(x_train, y_train, <span class="string">'go'</span>, label=<span class="string">'True data'</span>, alpha=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot predictions</span></span><br><span class="line">plt.plot(x_train, predicted, <span class="string">'--'</span>, label=<span class="string">'Predictions'</span>, alpha=<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Legend and plot</span></span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h3 id="1-9-Save-Model-and-Load-Model"><a href="#1-9-Save-Model-and-Load-Model" class="headerlink" title="1.9 Save Model and Load Model"></a>1.9 Save Model and Load Model</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Save modle</span></span><br><span class="line">save_model = <span class="literal">False</span></span><br><span class="line"><span class="keyword">if</span> save_model:</span><br><span class="line">    torch.save(model.state_dict(), <span class="string">'lr.pkl'</span>)</span><br><span class="line"><span class="comment"># Load Model</span></span><br><span class="line">load_model = <span class="literal">False</span></span><br><span class="line"><span class="keyword">if</span> load_model:</span><br><span class="line">    model.load_state_dict(torch.load(<span class="string">'lr.pkl'</span>))</span><br></pre></td></tr></table></figure>
+<h3 id="1-10-CPU-Model-Summary"><a href="#1-10-CPU-Model-Summary" class="headerlink" title="1.10 CPU Model Summary"></a>1.10 CPU Model Summary</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">STEP 1: CREATE MODEL CLASS</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinearRegressionModel</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input_dim, output_dim)</span>:</span></span><br><span class="line">        super(LinearRegressionModel, self).__init__()</span><br><span class="line">        self.linear = nn.Linear(input_dim, output_dim)  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        out = self.linear(x)</span><br><span class="line">        <span class="keyword">return</span> out</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">STEP 2: INSTANTIATE MODEL CLASS</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">input_dim = <span class="number">1</span></span><br><span class="line">output_dim = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">model = LinearRegressionModel(input_dim, output_dim)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">STEP 3: INSTANTIATE LOSS CLASS</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">criterion = nn.MSELoss()</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">STEP 4: INSTANTIATE OPTIMIZER CLASS</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">learning_rate = <span class="number">0.01</span></span><br><span class="line"></span><br><span class="line">optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">STEP 5: TRAIN THE MODEL</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">epochs = <span class="number">100</span></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> range(epochs):</span><br><span class="line">    epoch += <span class="number">1</span></span><br><span class="line">    <span class="comment"># Convert numpy array to torch Variable</span></span><br><span class="line">    inputs = torch.from_numpy(x_train).requires_grad_()</span><br><span class="line">    labels = torch.from_numpy(y_train)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Clear gradients w.r.t. parameters</span></span><br><span class="line">    optimizer.zero_grad() </span><br><span class="line"></span><br><span class="line">    <span class="comment"># Forward to get output</span></span><br><span class="line">    outputs = model(inputs)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Calculate Loss</span></span><br><span class="line">    loss = criterion(outputs, labels)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Getting gradients w.r.t. parameters</span></span><br><span class="line">    loss.backward()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Updating parameters</span></span><br><span class="line">    optimizer.step()</span><br></pre></td></tr></table></figure>
+<h3 id="1-11-GPU-Model"><a href="#1-11-GPU-Model" class="headerlink" title="1.11 GPU Model"></a>1.11 GPU Model</h3></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PyTorch/" rel="tag"><i class="fa fa-tag"></i>PyTorch</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/27/cs229/" rel="next">
+                吴恩达-机器学习-学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+          </div>
+        
+      
+
+        
+          
+  
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview" sidebar-panel>
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/hy.jpeg" alt="qwertymjs" itemprop="image">
+          <p class="site-author-name" itemprop="name">qwertymjs</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">悄悄是别离的笙箫，沉默是今晚的康桥。</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/qwertymjs" target="_blank">
+                  <i class="fa fa-github"></i> GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:mojunsheng2014@163.com" target="_blank">
+                  <i class="fa fa-e-mail"></i> E-Mail
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-线性模型-linear-model"><span class="nav-number">1.</span> <span class="nav-text">0. 线性模型 linear model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-线性回归-linear-regression"><span class="nav-number">2.</span> <span class="nav-text">1. 线性回归 linear regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-线性回归定义"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 线性回归定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-线性回归几何解析"><span class="nav-number">2.2.</span> <span class="nav-text">1.2 线性回归几何解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-贝叶斯线性回归"><span class="nav-number">2.3.</span> <span class="nav-text">1.3 贝叶斯线性回归</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-逻辑回归-logistic-regression"><span class="nav-number">3.</span> <span class="nav-text">2. 逻辑回归 logistic regression</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-逻辑回归定义"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 逻辑回归定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-L1-vs-L2-正则化"><span class="nav-number">3.2.</span> <span class="nav-text">2.2 $L1 vs L2$正则化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-贝叶斯逻辑回归"><span class="nav-number">3.3.</span> <span class="nav-text">2.3 贝叶斯逻辑回归</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-广义线性模型-GLM"><span class="nav-number">4.</span> <span class="nav-text">3. 广义线性模型 GLM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-指数族分布"><span class="nav-number">4.1.</span> <span class="nav-text">3.1 指数族分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-线性回归"><span class="nav-number">4.2.</span> <span class="nav-text">3.2 线性回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-逻辑回归"><span class="nav-number">4.3.</span> <span class="nav-text">3.3 逻辑回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-Softmax-Regression"><span class="nav-number">4.4.</span> <span class="nav-text">3.4 Softmax Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-GLM延伸-阿里分层GML"><span class="nav-number">4.5.</span> <span class="nav-text">3.5 GLM延伸(阿里分层GML)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-优化问题"><span class="nav-number">5.</span> <span class="nav-text">4. 优化问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-梯度下降法"><span class="nav-number">5.1.</span> <span class="nav-text">4.1 梯度下降法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-牛顿法"><span class="nav-number">5.2.</span> <span class="nav-text">4.2 牛顿法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-拟牛顿法"><span class="nav-number">5.3.</span> <span class="nav-text">4.3 拟牛顿法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-在线学习"><span class="nav-number">5.4.</span> <span class="nav-text">4.4 在线学习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-代码实现"><span class="nav-number">6.</span> <span class="nav-text">5. 代码实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-频率派VS贝叶斯"><span class="nav-number">7.</span> <span class="nav-text">6. 频率派VS贝叶斯</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Linear-Regression"><span class="nav-number"></span> <span class="nav-text">1. Linear Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Simple-Linear-Regression-Basics"><span class="nav-number">1.</span> <span class="nav-text">1.1 Simple Linear Regression Basics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Aim-of-Linear-Regression"><span class="nav-number">2.</span> <span class="nav-text">1.2 Aim of Linear Regression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Build-Regression-Model"><span class="nav-number">3.</span> <span class="nav-text">1.3 Build Regression Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-Build-Regression-Model-with-PyTorch"><span class="nav-number">4.</span> <span class="nav-text">1.4 Build Regression Model with PyTorch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-Create-LinearRegressionModel"><span class="nav-number">5.</span> <span class="nav-text">1.5 Create LinearRegressionModel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-Instantiate-Loss-Function"><span class="nav-number">6.</span> <span class="nav-text">1.6 Instantiate Loss Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-Optimizer-Class"><span class="nav-number">7.</span> <span class="nav-text">1.7 Optimizer Class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-8-Train-Model"><span class="nav-number">8.</span> <span class="nav-text">1.8 Train Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-9-Save-Model-and-Load-Model"><span class="nav-number">9.</span> <span class="nav-text">1.9 Save Model and Load Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-10-CPU-Model-Summary"><span class="nav-number">10.</span> <span class="nav-text">1.10 CPU Model Summary</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-11-GPU-Model"><span class="nav-number">11.</span> <span class="nav-text">1.11 GPU Model</span></a></li></ol></li></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+	  </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heartbeat" aria-hidden="true"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qwertymjs</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="#">
+    FreeSky
+  </a>(Reserved)
+
+  
+  <span id="busuanzi_container_site_uv">
+     &nbsp; | &nbsp;  用户量: <span id="busuanzi_value_site_uv"></span>
+  </span>
+  <span id="busuanzi_container_site_pv">
+    &nbsp; | &nbsp;  总访问量: <span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  
+</div>
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/others/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+    
+
+  
+
+
+  
+  
+  <script type="text/javascript" src="/others/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  
+
+  <script type="text/javascript" src="/others/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/others/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.2" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/others/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    var $aboutContent = $('#posts-about');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0 && $aboutContent.length === 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+
+      motionIntegrator.bootstrap();
+    });
+  </script>
+
+  
+  
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+  
+     <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("MNmN8wxC6f8wRSiT7MEzOFKa-gzGzoHsz", "T3r2dLr1mNzJYsRjDq1vjpg1");</script>
+<script>
+function showTime(Counter) {
+  var query = new AV.Query(Counter);
+  $(".leancloud_visitors").each(function() {
+    var url = $(this).attr("id").trim();
+    query.equalTo("url", url);
+    query.find({
+      success: function(results) {
+        if (results.length == 0) {
+          var content = $(document.getElementById(url)).text() + ': 0';
+          $(document.getElementById(url)).text(content);
+          return;
+        }
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
+          $(document.getElementById(url)).text(content);
+        }
+      },
+      error: function(object, error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+
+  });
+}
+
+function addCount(Counter) {
+  var Counter = AV.Object.extend("Counter");
+  url = $(".leancloud_visitors").attr('id').trim();
+  title = $(".leancloud_visitors").attr('data-flag-title').trim();
+  var query = new AV.Query(Counter);
+  query.equalTo("url", url);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        var counter = results[0];
+        counter.fetchWhenSave(true);
+        counter.increment("time");
+        counter.save(null, {
+          success: function(counter) {
+            var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(counter, error) {
+            console.log('Failed to save Visitor num, with error message: ' + error.message);
+          }
+        });
+      } else {
+        var newcounter = new Counter();
+        newcounter.set("title", title);
+        newcounter.set("url", url);
+        newcounter.set("time", 1);
+        newcounter.save(null, {
+          success: function(newcounter) {
+              console.log("newcounter.get('time')="+newcounter.get('time'));
+            var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
+            $(document.getElementById(url)).text(content);
+          },
+          error: function(newcounter, error) {
+            console.log('Failed to create');
+          }
+        });
+      }
+    },
+    error: function(error) {
+      console.log('Error:' + error.code + " " + error.message);
+    }
+  });
+}
+$(function() {
+  var Counter = AV.Object.extend("Counter");
+  if ($('.leancloud_visitors').length == 1) {
+    addCount(Counter);
+  } else if ($('.post-title-link').length > 1) {
+    showTime(Counter);
+  }
+}); 
+</script>
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":210,"height":420,"vOffset":15},"mobile":{"show":false},"log":false});</script></body>
+</html>
