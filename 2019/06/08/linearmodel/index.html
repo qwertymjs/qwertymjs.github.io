@@ -55,7 +55,7 @@
 <meta property="og:site_name" content="Qwertymjs&#39;s Blog">
 <meta property="og:description" content="0. 线性模型 linear model 机器学习模型应用五花八门，有复杂有简单，但线性模型是其中最最简单的，基础的模型，也是最典型的模型之一了，有助于我们了解整个机器学习的运作方式。所以能对线性模型知其然，知其所以然，才能真正做到从入门到放弃机器学习。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-12T09:05:13.248Z">
+<meta property="og:updated_time" content="2019-06-12T09:13:06.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Introduction To Linear Model">
 <meta name="twitter:description" content="0. 线性模型 linear model 机器学习模型应用五花八门，有复杂有简单，但线性模型是其中最最简单的，基础的模型，也是最典型的模型之一了，有助于我们了解整个机器学习的运作方式。所以能对线性模型知其然，知其所以然，才能真正做到从入门到放弃机器学习。">
@@ -283,10 +283,10 @@
 <h5 id="最小二乘法的参数估计"><a href="#最小二乘法的参数估计" class="headerlink" title="最小二乘法的参数估计"></a>最小二乘法的参数估计</h5><blockquote>
 <p>最小二乘法定义的loss function : $L(w) = \sum_{i-1}^N (w^Tx_i - y_i)^2$, 用我们上面定义的$X, Y, w$把$L(w)$写成矩阵形式：</p>
 <script type="math/tex; mode=display">L(w) = \sum_{i-1}^N (w^Tx_i - y_i)^2 = \begin{pmatrix} w^Tx_1-y_1& w^Tx_2-y_2 & \dots & w^Tx_N-y_N \end{pmatrix} \begin{pmatrix} w^Tx_1-y_1\\ w^Tx_2-y_2 \\ \vdots \\ w^Tx_N-y_N \end{pmatrix}</script><p>我们先处理左边的矩阵，其中：</p>
-<script type="math/tex; mode=display">\begin{pmatrix} w^Tx_1-y_1& w^Tx_2-y_2 & \dots & w^Tx_N-y_N \end{pmatrix} = \begin{pmatrix} w^Tx_1& w^Tx_2 & \dots & w^Tx_N \end{pmatrix} - \begin{pmatrix} y_1& y_2 & \dots & y_N \end{pmatrix}</script><script type="math/tex; mode=display">=w^T \begin{pmatrix} x_1&x_2 & \dots & x_N \end{pmatrix} - \begin{pmatrix} y_1& y_2 & \dots & y_N \end{pmatrix} = w^TX^T - Y^T</script><p>右边矩阵是左边矩阵的转置，所以：</p>
-<script type="math/tex; mode=display">\begin{pmatrix} w^Tx_1-y_1\\ w^Tx_2-y_2 \\ \vdots \\ w^Tx_N-y_N \end{pmatrix} = (w^TX^T - Y^T)^T = Xw - Y</script><p>可得$L(w)$完全写成矩阵形式：$L(w) = (w^TX^T - Y^T)(Xw - Y) = w^TX^TXw - w^TX^TY^T - Y^TXw + Y^TY$</p>
-<p>其中$w^TX^TY^T , Y^TXw$为一维度实数，并且$(w^TX^TY^T) ^T = Y^TXw$,所以这两个矩阵时相等的。所以：</p>
-<script type="math/tex; mode=display">L(w) = (w^TX^T - Y^T)(Xw - Y) = w^TX^TXw - w^TX^TY^T - Y^TXw + Y^TY = w^TX^TXw - 2w^TX^TY^T + Y^TY</script><p>w的解是loss function取得最小的值$\hat{w}$,所以$L(w)$对$w$求导等于0；</p>
+<script type="math/tex; mode=display">\begin{pmatrix} w^Tx_1-y_1& w^Tx_2-y_2 & \dots & w^Tx_N-y_N \end{pmatrix}</script><script type="math/tex; mode=display">= \begin{pmatrix} w^Tx_1& w^Tx_2 & \dots & w^Tx_N \end{pmatrix} - \begin{pmatrix} y_1& y_2 & \dots & y_N \end{pmatrix}</script><script type="math/tex; mode=display">=w^T \begin{pmatrix} x_1&x_2 & \dots & x_N \end{pmatrix} - \begin{pmatrix} y_1& y_2 & \dots & y_N \end{pmatrix}</script><script type="math/tex; mode=display">= w^TX^T - Y^T</script><p>右边矩阵是左边矩阵的转置，所以：</p>
+<script type="math/tex; mode=display">\begin{pmatrix} w^Tx_1-y_1\\ w^Tx_2-y_2 \\ \vdots \\ w^Tx_N-y_N \end{pmatrix} = (w^TX^T - Y^T)^T = Xw - Y</script><p>可得$L(w)$完全写成矩阵形式：</p>
+<script type="math/tex; mode=display">L(w) = (w^TX^T - Y^T)(Xw - Y) = w^TX^TXw - w^TX^TY^T - Y^TXw + Y^TY</script><p>其中$w^TX^TY^T , Y^TXw$为一维度实数，并且$(w^TX^TY^T) ^T = Y^TXw$,所以这两个矩阵时相等的。所以：</p>
+<script type="math/tex; mode=display">L(w) = (w^TX^T - Y^T)(Xw - Y)</script><script type="math/tex; mode=display">= w^TX^TXw - w^TX^TY^T - Y^TXw + Y^TY</script><script type="math/tex; mode=display">= w^TX^TXw - 2w^TX^TY^T + Y^TY</script><p>w的解是loss function取得最小的值$\hat{w}$,所以$L(w)$对$w$求导等于0；</p>
 <script type="math/tex; mode=display">\hat{w} = \operatorname{argmin}L(w), \frac{\partial L(w)}{\partial w} = 2X^TXw - 2X^TY^T = 0</script><p>$\therefore X^TXw  = X^TY^T, 解得：w = (X^TX)^{-1}X^TY$</p>
 <p>所以最小二乘法对应的解析解为：$(X^TX)^{-1}X^TY$,其中$(X^TX)^{-1}X^T$也称为伪逆，记作$$。</p>
 </blockquote>
